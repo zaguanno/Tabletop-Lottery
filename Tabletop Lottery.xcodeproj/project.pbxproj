@@ -33,6 +33,8 @@
 		B54A589226D54960004EDF31 /* LotteryWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A589026D54960004EDF31 /* LotteryWheelView.swift */; };
 		B54A589426D564A8004EDF31 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A589326D564A8004EDF31 /* Filter.swift */; };
 		B54A589526D564A8004EDF31 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A589326D564A8004EDF31 /* Filter.swift */; };
+		B54A589726D57942004EDF31 /* NumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A589626D57942004EDF31 /* NumberTextField.swift */; };
+		B54A589826D57942004EDF31 /* NumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A589626D57942004EDF31 /* NumberTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,7 @@
 		B54A588D26D5492A004EDF31 /* PlayGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayGameView.swift; sourceTree = "<group>"; };
 		B54A589026D54960004EDF31 /* LotteryWheelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryWheelView.swift; sourceTree = "<group>"; };
 		B54A589326D564A8004EDF31 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		B54A589626D57942004EDF31 /* NumberTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +137,7 @@
 				B54A587B26D43F86004EDF31 /* Color+Codable.swift */,
 				B54A588126D44987004EDF31 /* GameData.swift */,
 				B54A589326D564A8004EDF31 /* Filter.swift */,
+				B54A589626D57942004EDF31 /* NumberTextField.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -245,6 +249,7 @@
 				B54A588826D44C5F004EDF31 /* EditView.swift in Sources */,
 				B54A587C26D43F86004EDF31 /* Color+Codable.swift in Sources */,
 				B54A589126D54960004EDF31 /* LotteryWheelView.swift in Sources */,
+				B54A589726D57942004EDF31 /* NumberTextField.swift in Sources */,
 				B54A588526D44C4D004EDF31 /* CardView.swift in Sources */,
 				B54A586626D43DEA004EDF31 /* Tabletop_LotteryApp.swift in Sources */,
 			);
@@ -264,6 +269,7 @@
 				B54A588926D44C5F004EDF31 /* EditView.swift in Sources */,
 				B54A587D26D43F86004EDF31 /* Color+Codable.swift in Sources */,
 				B54A589226D54960004EDF31 /* LotteryWheelView.swift in Sources */,
+				B54A589826D57942004EDF31 /* NumberTextField.swift in Sources */,
 				B54A588626D44C4D004EDF31 /* CardView.swift in Sources */,
 				B54A586726D43DEA004EDF31 /* Tabletop_LotteryApp.swift in Sources */,
 			);

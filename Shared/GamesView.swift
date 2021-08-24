@@ -23,6 +23,10 @@ struct GamesView: View {
                 }
                 .listRowBackground(game.color)
             }
+            .onDelete(perform: deleteGame)
+        }
+        .toolbar {
+            EditButton()
         }
         .navigationTitle("My Tabletop Games")
         .navigationBarItems(leading: Button(action: {
@@ -65,6 +69,10 @@ struct GamesView: View {
             fatalError("Can't find game in array")
         }
         return $games[gameIndex]
+    }
+    
+    private func deleteGame(at offsets: IndexSet) {
+        games.remove(atOffsets: offsets)
     }
 }
 
