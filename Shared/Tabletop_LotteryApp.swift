@@ -9,9 +9,18 @@ import SwiftUI
 
 @main
 struct Tabletop_LotteryApp: App {
+    @ObservedObject private var data = GameData()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView {
+                GamesView(games: $data.games) {
+                    data.save()
+                }
+            }
+            .navigationViewStyle(StackNavigationViewStyle())
+            .onAppear() {
+                data.load()
+            }
         }
     }
 }
