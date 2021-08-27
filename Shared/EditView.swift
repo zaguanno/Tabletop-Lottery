@@ -5,10 +5,17 @@
 //  Created by Zachary Smoak on 8/23/21.
 //
 
+import CodeScanner
 import SwiftUI
 
 struct EditView: View {
     @Binding var gameData: TabletopGame.Data
+    @Binding var games: [TabletopGame]
+    @Binding var isNewGame: Bool
+    @State private var isShowingScanner: Bool = false
+    @State private var isShowingErrorAlert: Bool = false
+    @State private var scanningErrorMessage: String = ""
+    @State private var scanResults: ScanResult = ScanResult()
     var body: some View {
         List {
             Section(header: Text("Game Info")) {
@@ -44,6 +51,20 @@ struct EditView: View {
                         }
                     }
                 }
+                //TODO: Picker for connecting Expansion to Base
+               /*if gameData.typeIsExpansion {
+                    HStack {
+                        VStack {
+                            Picker("Base Game", selection: $gameData.baseGameID) {
+                                ForEach(games.filter({$0.typeIsBase})) {game in
+                                    Text("\(game.title)").tag(game.baseGameID)
+                                }
+                            }
+                            .pickerStyle(WheelPickerStyle())
+                            Text("suggestedTopping: \(gameData.baseGameID)")
+                        }
+                    }
+                }*/
                 HStack {
                     Slider(value: $gameData.lengthInMinutes, in: 5...120, step: 1.0) {
                         Text("Length")
@@ -86,13 +107,73 @@ struct EditView: View {
                     Image(systemName: "star.fill")
                 }
             }
+            if isNewGame {
+                HStack(alignment: .center) {
+                    Spacer()
+                    Button(action: {
+                        isShowingScanner = true
+                    }) {
+                        Label("Scan a Barcode", systemImage: "barcode.viewfinder")
+                    }
+                    .alert(isPresented: $isShowingErrorAlert) {
+                        Alert(title: Text("Scanning Error"), message: Text("\(scanningErrorMessage)"), dismissButton: .default(Text("Got it!")))
+                    }
+                    Spacer()
+                }
+                Section(header: Text("Scanning Data")) {
+                    VStack {
+                        Text("UPC: \(scanResults.rawScanData)")
+                        Divider()
+                        Text("Game Title: \(scanResults.gameTitle)")
+                        Divider()
+                        Text("Play Time: \(scanResults.gameDetails.playingtime)")
+                        Divider()
+                        Text("Min Players: \(scanResults.gameDetails.minplayers)")
+                        Divider()
+                        Text("Max Players: \(scanResults.gameDetails.maxplayers)")
+                    }
+                }
+            }
         }
         .listStyle(InsetGroupedListStyle())
+        .sheet(isPresented: $isShowingScanner) {
+            CodeScannerView(codeTypes: [.qr,.code39,.code39Mod43,.code93,.code128,.ean8,.ean13,.interleaved2of5,.itf14,.upce], simulatedData: "824968717912", completion: handleScan)
+            // 3770001556185 (Tokaido)
+            // 824968717912 (Ticket to Ride)
+        }
+        
+        
+
+    }
+    
+    func handleScan(result: Result<String, CodeScannerView.ScanError>) {
+        self.isShowingScanner = false
+        switch result {
+        case .success(let code):
+            let scan = ScanResult(rawScanData: code)
+            scan.search() { scanResult in
+                gameData.title = scan.gameTitle
+                switch scanResult {
+                case .failure(let scanError):
+                    scanningErrorMessage = scan.errorMessage(error: scanError).replacingOccurrences(of: ".gameTitle", with: scan.gameTitle)
+                    self.isShowingErrorAlert = true
+                case .success(let scannedGame):
+                    gameData.lengthInMinutes = Double(scannedGame.playingtime)
+                    gameData.minimumPlayers = Double(scannedGame.minplayers)
+                    gameData.maximumPlayers = Double(scannedGame.maxplayers)
+                }
+            }
+
+            scanResults = scan
+        case .failure(_):
+            print("Scanning failed")
+            self.isShowingScanner = false
+        }
     }
 }
 
 struct EditView_Previews: PreviewProvider {
     static var previews: some View {
-        EditView(gameData: .constant(TabletopGame.data[1].data))
+        EditView(gameData: .constant(TabletopGame.data[3].data), games: .constant(TabletopGame.data), isNewGame: .constant(false))
     }
 }

@@ -18,6 +18,7 @@ struct TabletopGame: Identifiable, Codable {
     var lengthInMinutes: Int
     var color: Color
     var rating: Double
+    var baseGameID: UUID?
     //var boxArt: Image
     //var categories: [String]
     var history: [History]
@@ -33,6 +34,7 @@ struct TabletopGame: Identifiable, Codable {
          lengthInMinutes: Int,
          color: Color,
          rating: Double = 0.0,
+         baseGameID: UUID? = nil,
          history: [History] = []) {
         self.id = id
         self.title = title
@@ -44,6 +46,7 @@ struct TabletopGame: Identifiable, Codable {
         self.lengthInMinutes = lengthInMinutes
         self.color = color
         self.rating = rating
+        self.baseGameID = baseGameID
         self.history = history
     }
 }
@@ -70,6 +73,15 @@ extension TabletopGame {
                          maximumPlayers: 6,
                          lengthInMinutes: 90,
                          color: Color.purple,
+                         rating: 5),
+            TabletopGame(title: "Villianous: Pride",
+                         typeIsBase: false,
+                         typeIsExpansion: true,
+                         typeIsVariant: true,
+                         minimumPlayers: 2,
+                         maximumPlayers: 6,
+                         lengthInMinutes: 90,
+                         color: Color.purple,
                          rating: 5)
         ]
     }
@@ -85,6 +97,7 @@ extension TabletopGame {
         var maximumPlayers: Double = 5
         var lengthInMinutes: Double = 5.0
         var color: Color = .random
+        var baseGameID: UUID?
         var rating: Double = 0.0
     }
     
@@ -97,6 +110,7 @@ extension TabletopGame {
                     maximumPlayers: Double(maximumPlayers),
                     lengthInMinutes: Double(lengthInMinutes),
                     color: color,
+                    baseGameID: baseGameID,
                     rating: rating)
     }
     
@@ -109,6 +123,7 @@ extension TabletopGame {
         maximumPlayers = Int(data.maximumPlayers)
         lengthInMinutes = Int(data.lengthInMinutes)
         color = data.color
+        baseGameID = data.baseGameID
         rating = data.rating
     }
 }

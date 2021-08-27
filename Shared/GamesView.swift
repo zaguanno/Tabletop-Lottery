@@ -10,7 +10,7 @@ import SwiftUI
 struct GamesView: View {
     @Binding var games: [TabletopGame]
     @Environment(\.scenePhase) private var scenePhase
-    @State private var isPresented = false
+    @State private var isNewGamePresented = false
     @State private var isWheelPresented = false
     @State private var newGameData = TabletopGame.Data()
     let saveAction: () -> Void
@@ -18,7 +18,7 @@ struct GamesView: View {
     var body: some View {
         List {
             ForEach(games) {game in
-                NavigationLink(destination: DetailView(game: binding(for: game))) {
+                NavigationLink(destination: DetailView(game: binding(for: game), games: $games)) {
                     CardView(game: game)
                 }
                 .listRowBackground(game.color)
@@ -34,7 +34,7 @@ struct GamesView: View {
         }) {
             Label("Spin the Wheel", systemImage: "arrow.2.circlepath")
         }, trailing: Button(action: {
-            isPresented = true
+            isNewGamePresented = true
         }) {
             Image(systemName: "plus")
         })
@@ -46,15 +46,16 @@ struct GamesView: View {
                     })
             }
         }
-        .sheet(isPresented: $isPresented) {
+        .sheet(isPresented: $isNewGamePresented) {
             NavigationView {
-                EditView(gameData: $newGameData)
+                EditView(gameData: $newGameData, games: $games, isNewGame: $isNewGamePresented)
                     .navigationBarItems(leading: Button("Dismiss") {
-                        isPresented = false
+                        isNewGamePresented = false
+                        newGameData = TabletopGame.Data()
                     }, trailing: Button("Add") {
-                        let newGame = TabletopGame(title: newGameData.title, typeIsBase: newGameData.typeIsBase, typeIsExpansion: newGameData.typeIsExpansion, typeIsVariant: newGameData.typeIsVariant, minimumPlayers: Int(newGameData.minimumPlayers), maximumPlayers: Int(newGameData.maximumPlayers),  lengthInMinutes: Int(newGameData.lengthInMinutes), color: newGameData.color, rating: newGameData.rating)
+                        let newGame = TabletopGame(title: newGameData.title, typeIsBase: newGameData.typeIsBase, typeIsExpansion: newGameData.typeIsExpansion, typeIsVariant: newGameData.typeIsVariant, minimumPlayers: Int(newGameData.minimumPlayers), maximumPlayers: Int(newGameData.maximumPlayers),  lengthInMinutes: Int(newGameData.lengthInMinutes), color: newGameData.color, rating: newGameData.rating, baseGameID: newGameData.baseGameID)
                         games.append(newGame)
-                        isPresented = false
+                        isNewGamePresented = false
                         newGameData = TabletopGame.Data()
                     })
             }

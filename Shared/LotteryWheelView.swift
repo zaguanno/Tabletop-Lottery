@@ -30,7 +30,8 @@ struct LotteryWheelView: View {
                         }
                     } else {
                         Spacer()
-                        NavigationLink(destination: DetailView(game: binding(for: selectedGame))) {
+                        NavigationLink(destination: DetailView(game: binding(for: selectedGame), games: $games
+                        )) {
                             CardView(game: selectedGame)
                         }
                         .listRowBackground(selectedGame.color)

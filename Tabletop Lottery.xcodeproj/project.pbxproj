@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -35,6 +35,10 @@
 		B54A589526D564A8004EDF31 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A589326D564A8004EDF31 /* Filter.swift */; };
 		B54A589726D57942004EDF31 /* NumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A589626D57942004EDF31 /* NumberTextField.swift */; };
 		B54A589826D57942004EDF31 /* NumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A589626D57942004EDF31 /* NumberTextField.swift */; };
+		B54A589B26D6935C004EDF31 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = B54A589A26D6935C004EDF31 /* CodeScanner */; };
+		B54A589D26D6973F004EDF31 /* ScanResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A589C26D6973F004EDF31 /* ScanResult.swift */; };
+		B54A589E26D6973F004EDF31 /* ScanResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A589C26D6973F004EDF31 /* ScanResult.swift */; };
+		B54A58A426D6E725004EDF31 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = B54A58A326D6E725004EDF31 /* XMLCoder */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +61,7 @@
 		B54A589026D54960004EDF31 /* LotteryWheelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryWheelView.swift; sourceTree = "<group>"; };
 		B54A589326D564A8004EDF31 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		B54A589626D57942004EDF31 /* NumberTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTextField.swift; sourceTree = "<group>"; };
+		B54A589C26D6973F004EDF31 /* ScanResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +69,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B54A58A426D6E725004EDF31 /* XMLCoder in Frameworks */,
+				B54A589B26D6935C004EDF31 /* CodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +145,7 @@
 				B54A588126D44987004EDF31 /* GameData.swift */,
 				B54A589326D564A8004EDF31 /* Filter.swift */,
 				B54A589626D57942004EDF31 /* NumberTextField.swift */,
+				B54A589C26D6973F004EDF31 /* ScanResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -158,6 +166,10 @@
 			dependencies = (
 			);
 			name = "Tabletop Lottery (iOS)";
+			packageProductDependencies = (
+				B54A589A26D6935C004EDF31 /* CodeScanner */,
+				B54A58A326D6E725004EDF31 /* XMLCoder */,
+			);
 			productName = "Tabletop Lottery (iOS)";
 			productReference = B54A585A26D43DEA004EDF31 /* Tabletop Lottery.app */;
 			productType = "com.apple.product-type.application";
@@ -205,6 +217,10 @@
 				Base,
 			);
 			mainGroup = B54A584D26D43DE8004EDF31;
+			packageReferences = (
+				B54A589926D6935C004EDF31 /* XCRemoteSwiftPackageReference "CodeScanner" */,
+				B54A58A226D6E725004EDF31 /* XCRemoteSwiftPackageReference "XMLCoder" */,
+			);
 			productRefGroup = B54A585B26D43DEA004EDF31 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -242,6 +258,7 @@
 				B54A587F26D447C4004EDF31 /* GamesView.swift in Sources */,
 				B54A589426D564A8004EDF31 /* Filter.swift in Sources */,
 				B54A587626D43EE1004EDF31 /* TabletopGame.swift in Sources */,
+				B54A589D26D6973F004EDF31 /* ScanResult.swift in Sources */,
 				B54A588B26D44C6B004EDF31 /* DetailView.swift in Sources */,
 				B54A587926D43F47004EDF31 /* History.swift in Sources */,
 				B54A588E26D5492A004EDF31 /* PlayGameView.swift in Sources */,
@@ -262,6 +279,7 @@
 				B54A588026D447C4004EDF31 /* GamesView.swift in Sources */,
 				B54A589526D564A8004EDF31 /* Filter.swift in Sources */,
 				B54A587726D43EE1004EDF31 /* TabletopGame.swift in Sources */,
+				B54A589E26D6973F004EDF31 /* ScanResult.swift in Sources */,
 				B54A588C26D44C6B004EDF31 /* DetailView.swift in Sources */,
 				B54A587A26D43F47004EDF31 /* History.swift in Sources */,
 				B54A588F26D5492A004EDF31 /* PlayGameView.swift in Sources */,
@@ -513,6 +531,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B54A589926D6935C004EDF31 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.7;
+			};
+		};
+		B54A58A226D6E725004EDF31 /* XCRemoteSwiftPackageReference "XMLCoder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MaxDesiatov/XMLCoder";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.13.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B54A589A26D6935C004EDF31 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B54A589926D6935C004EDF31 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+		B54A58A326D6E725004EDF31 /* XMLCoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B54A58A226D6E725004EDF31 /* XCRemoteSwiftPackageReference "XMLCoder" */;
+			productName = XMLCoder;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B54A584E26D43DE8004EDF31 /* Project object */;
 }

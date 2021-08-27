@@ -9,8 +9,10 @@ import SwiftUI
 
 struct DetailView: View {
     @Binding var game: TabletopGame
+    @Binding var games: [TabletopGame]
     @State private var data: TabletopGame.Data = TabletopGame.Data()
     @State private var isPresented = false
+    @State private var isNewGame = false
     
     var body: some View {
         List {
@@ -89,7 +91,7 @@ struct DetailView: View {
         .navigationTitle(game.title)
         .fullScreenCover(isPresented: $isPresented) {
             NavigationView {
-                EditView(gameData: $data)
+                EditView(gameData: $data, games: $games, isNewGame: $isNewGame)
                     .navigationTitle(game.title)
                     .navigationBarItems(leading: Button("Cancel") {
                         isPresented = false
@@ -105,7 +107,7 @@ struct DetailView: View {
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            DetailView(game: .constant(TabletopGame.data[0]))
+            DetailView(game: .constant(TabletopGame.data[0]), games: .constant(TabletopGame.data))
         }
     }
 }
