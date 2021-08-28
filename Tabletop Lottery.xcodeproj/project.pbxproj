@@ -45,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		B509D3C726D9D68A00C53735 /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
+		B509D3CA26D9EBC700C53735 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B54A585326D43DE8004EDF31 /* Tabletop_LotteryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabletop_LotteryApp.swift; sourceTree = "<group>"; };
 		B54A585526D43DEA004EDF31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B54A585A26D43DEA004EDF31 /* Tabletop Lottery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tabletop Lottery.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +92,7 @@
 		B54A584D26D43DE8004EDF31 = {
 			isa = PBXGroup;
 			children = (
+				B509D3CA26D9EBC700C53735 /* README.md */,
 				B54A585226D43DE8004EDF31 /* Shared */,
 				B54A585C26D43DEA004EDF31 /* iOS */,
 				B54A586326D43DEA004EDF31 /* macOS */,
