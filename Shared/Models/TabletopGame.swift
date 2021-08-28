@@ -22,7 +22,7 @@ struct TabletopGame: Identifiable, Codable {
     //var image: Image
     var imageURLString: String
     //var categories: [String]
-    var history: [History]
+    var playthrough: [Playthrough]
     //var comments: [Comments]
     
     init(id: UUID = UUID(),
@@ -37,7 +37,7 @@ struct TabletopGame: Identifiable, Codable {
          rating: Rating = Rating(0),
          baseGameID: UUID? = nil,
          imageURLString: String = "",
-         history: [History] = []) {
+         playthrough: [Playthrough] = []) {
         self.id = id
         self.title = title
         self.typeIsBase = typeIsBase
@@ -50,7 +50,7 @@ struct TabletopGame: Identifiable, Codable {
         self.rating = rating
         self.baseGameID = baseGameID
         self.imageURLString = imageURLString
-        self.history = history
+        self.playthrough = playthrough
     }
     
     func imageURL() -> URL {
@@ -58,7 +58,7 @@ struct TabletopGame: Identifiable, Codable {
     }
     
     mutating func recalculateRating() {
-        rating = Rating(history.reduce(0) { ($0 + $1.rating.rating) } / Double(history.count))
+        rating = Rating(playthrough.reduce(0) { ($0 + $1.rating.rating) } / Double(playthrough.count))
     }
 }
 

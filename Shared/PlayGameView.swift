@@ -40,8 +40,8 @@ struct PlayGameView: View {
             
         }
         .onDisappear {
-            let newHistory = History(lengthInMinutes: 0, rating: Rating(currentPlayRating))
-            game.history.insert(newHistory, at: 0)
+            let newPlaythrough = Playthrough(lengthInMinutes: 0, rating: Rating(currentPlayRating))
+            game.playthrough.insert(newPlaythrough, at: 0)
             game.recalculateRating()
         }
         .navigationTitle(game.title)

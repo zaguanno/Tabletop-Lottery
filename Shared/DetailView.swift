@@ -87,16 +87,16 @@ struct DetailView: View {
                 }
                 .accessibilityElement(children: .ignore)
             }
-            Section(header: Text("History")) {
-                if game.history.isEmpty {
+            Section(header: Text("Playthroughs")) {
+                if game.playthrough.isEmpty {
                     Label("This game hasn't been played yet.", systemImage: "calendar.badge.exclamationmark")
                 }
-                ForEach(game.history) {history in
+                ForEach(game.playthrough) {playthrough in
                     HStack {
                         Image(systemName: "calendar")
-                        Text(history.date, style: .date)
+                        Text(playthrough.date, style: .date)
                         Spacer()
-                        history.rating.ratingView()
+                        playthrough.rating.ratingView()
                             .font(.caption)
                     }
                 }

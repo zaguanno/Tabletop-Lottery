@@ -17,8 +17,8 @@
 		B54A586B26D43DEA004EDF31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B54A585526D43DEA004EDF31 /* Assets.xcassets */; };
 		B54A587626D43EE1004EDF31 /* TabletopGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A587526D43EE1004EDF31 /* TabletopGame.swift */; };
 		B54A587726D43EE1004EDF31 /* TabletopGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A587526D43EE1004EDF31 /* TabletopGame.swift */; };
-		B54A587926D43F47004EDF31 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A587826D43F47004EDF31 /* History.swift */; };
-		B54A587A26D43F47004EDF31 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A587826D43F47004EDF31 /* History.swift */; };
+		B54A587926D43F47004EDF31 /* Playthrough.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A587826D43F47004EDF31 /* Playthrough.swift */; };
+		B54A587A26D43F47004EDF31 /* Playthrough.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A587826D43F47004EDF31 /* Playthrough.swift */; };
 		B54A587C26D43F86004EDF31 /* Color+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A587B26D43F86004EDF31 /* Color+Codable.swift */; };
 		B54A587D26D43F86004EDF31 /* Color+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A587B26D43F86004EDF31 /* Color+Codable.swift */; };
 		B54A587F26D447C4004EDF31 /* GamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A587E26D447C4004EDF31 /* GamesView.swift */; };
@@ -54,7 +54,7 @@
 		B54A586426D43DEA004EDF31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B54A586526D43DEA004EDF31 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		B54A587526D43EE1004EDF31 /* TabletopGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabletopGame.swift; sourceTree = "<group>"; };
-		B54A587826D43F47004EDF31 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
+		B54A587826D43F47004EDF31 /* Playthrough.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playthrough.swift; sourceTree = "<group>"; };
 		B54A587B26D43F86004EDF31 /* Color+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Codable.swift"; sourceTree = "<group>"; };
 		B54A587E26D447C4004EDF31 /* GamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesView.swift; sourceTree = "<group>"; };
 		B54A588126D44987004EDF31 /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 				B54A587526D43EE1004EDF31 /* TabletopGame.swift */,
 				B54A589C26D6973F004EDF31 /* ScanResult.swift */,
 				B54A589326D564A8004EDF31 /* Filter.swift */,
-				B54A587826D43F47004EDF31 /* History.swift */,
+				B54A587826D43F47004EDF31 /* Playthrough.swift */,
 				B54A587B26D43F86004EDF31 /* Color+Codable.swift */,
 				B54A588126D44987004EDF31 /* GameData.swift */,
 				B509D3C726D9D68A00C53735 /* Rating.swift */,
@@ -269,7 +269,7 @@
 				B54A587626D43EE1004EDF31 /* TabletopGame.swift in Sources */,
 				B54A589D26D6973F004EDF31 /* ScanResult.swift in Sources */,
 				B54A588B26D44C6B004EDF31 /* DetailView.swift in Sources */,
-				B54A587926D43F47004EDF31 /* History.swift in Sources */,
+				B54A587926D43F47004EDF31 /* Playthrough.swift in Sources */,
 				B509D3C826D9D68A00C53735 /* Rating.swift in Sources */,
 				B54A588E26D5492A004EDF31 /* PlayGameView.swift in Sources */,
 				B54A588226D44987004EDF31 /* GameData.swift in Sources */,
@@ -290,7 +290,7 @@
 				B54A587726D43EE1004EDF31 /* TabletopGame.swift in Sources */,
 				B54A589E26D6973F004EDF31 /* ScanResult.swift in Sources */,
 				B54A588C26D44C6B004EDF31 /* DetailView.swift in Sources */,
-				B54A587A26D43F47004EDF31 /* History.swift in Sources */,
+				B54A587A26D43F47004EDF31 /* Playthrough.swift in Sources */,
 				B509D3C926D9D68A00C53735 /* Rating.swift in Sources */,
 				B54A588F26D5492A004EDF31 /* PlayGameView.swift in Sources */,
 				B54A588326D44987004EDF31 /* GameData.swift in Sources */,

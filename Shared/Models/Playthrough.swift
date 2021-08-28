@@ -1,5 +1,5 @@
 //
-//  History.swift
+//  Playthrough.swift
 //  Tabletop Lottery
 //
 //  Created by Zachary Smoak on 8/23/21.
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct History: Identifiable, Codable {
+struct Playthrough: Identifiable, Codable {
     let id: UUID
     let date: Date
     var lengthInMinutes: Int
