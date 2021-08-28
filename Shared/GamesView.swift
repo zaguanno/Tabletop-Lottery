@@ -53,7 +53,17 @@ struct GamesView: View {
                         isNewGamePresented = false
                         newGameData = TabletopGame.Data()
                     }, trailing: Button("Add") {
-                        let newGame = TabletopGame(title: newGameData.title, typeIsBase: newGameData.typeIsBase, typeIsExpansion: newGameData.typeIsExpansion, typeIsVariant: newGameData.typeIsVariant, minimumPlayers: Int(newGameData.minimumPlayers), maximumPlayers: Int(newGameData.maximumPlayers),  lengthInMinutes: Int(newGameData.lengthInMinutes), color: newGameData.color, rating: newGameData.rating, baseGameID: newGameData.baseGameID)
+                        let newGame = TabletopGame(title: newGameData.title,
+                                                   typeIsBase: newGameData.typeIsBase,
+                                                   typeIsExpansion: newGameData.typeIsExpansion,
+                                                   typeIsVariant: newGameData.typeIsVariant,
+                                                   minimumPlayers: Int(newGameData.minimumPlayers),
+                                                   maximumPlayers: Int(newGameData.maximumPlayers),
+                                                   lengthInMinutes: Int(newGameData.lengthInMinutes),
+                                                   color: newGameData.color,
+                                                   rating: newGameData.rating,
+                                                   baseGameID: newGameData.baseGameID,
+                                                   imageURLString: newGameData.imageURLString)
                         games.append(newGame)
                         isNewGamePresented = false
                         newGameData = TabletopGame.Data()

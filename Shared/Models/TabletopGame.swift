@@ -19,7 +19,8 @@ struct TabletopGame: Identifiable, Codable {
     var color: Color
     var rating: Double
     var baseGameID: UUID?
-    //var boxArt: Image
+    //var image: Image
+    var imageURLString: String
     //var categories: [String]
     var history: [History]
     //var comments: [Comments]
@@ -35,6 +36,7 @@ struct TabletopGame: Identifiable, Codable {
          color: Color,
          rating: Double = 0.0,
          baseGameID: UUID? = nil,
+         imageURLString: String = "",
          history: [History] = []) {
         self.id = id
         self.title = title
@@ -47,7 +49,29 @@ struct TabletopGame: Identifiable, Codable {
         self.color = color
         self.rating = rating
         self.baseGameID = baseGameID
+        self.imageURLString = imageURLString
         self.history = history
+    }
+    
+    func imageURL() -> URL {
+        return URL(string: self.imageURLString)!
+    }
+    
+    func ratingView() -> some View {
+        return rView(rating: self.rating)
+    }
+    
+    struct rView: View {
+        var rating: Double
+        var body: some View {
+            HStack {
+                (rating >= 1) ? Image(systemName: "star.fill") : Image(systemName: "star")
+                (rating >= 2) ? Image(systemName: "star.fill") : Image(systemName: "star")
+                (rating >= 3) ? Image(systemName: "star.fill") : Image(systemName: "star")
+                (rating >= 4) ? Image(systemName: "star.fill") : Image(systemName: "star")
+                (rating >= 5) ? Image(systemName: "star.fill") : Image(systemName: "star")
+            }
+        }
     }
 }
 
@@ -68,13 +92,14 @@ extension TabletopGame {
                          lengthInMinutes: 60,
                          color: Color.green,
                          rating: 2),
-            TabletopGame(title: "Villianous",
+            TabletopGame(title: "Villainous",
                          minimumPlayers: 2,
                          maximumPlayers: 6,
                          lengthInMinutes: 90,
                          color: Color.purple,
-                         rating: 5),
-            TabletopGame(title: "Villianous: Pride",
+                         rating: 5,
+                         imageURLString:  "https://cf.geekdo-images.com/7Ej5V5Dq92QdvVFvISfl_A__original/img/XHykA7cqZ0F4tYiKXw095TvHRno=/0x0/filters:format(jpeg)/pic4216110.jpg"),
+            TabletopGame(title: "Villainous: Pride",
                          typeIsBase: false,
                          typeIsExpansion: true,
                          typeIsVariant: true,
@@ -98,6 +123,7 @@ extension TabletopGame {
         var lengthInMinutes: Double = 5.0
         var color: Color = .random
         var baseGameID: UUID?
+        var imageURLString: String = ""
         var rating: Double = 0.0
     }
     
@@ -111,6 +137,7 @@ extension TabletopGame {
                     lengthInMinutes: Double(lengthInMinutes),
                     color: color,
                     baseGameID: baseGameID,
+                    imageURLString: imageURLString,
                     rating: rating)
     }
     
@@ -124,6 +151,7 @@ extension TabletopGame {
         lengthInMinutes = Int(data.lengthInMinutes)
         color = data.color
         baseGameID = data.baseGameID
+        imageURLString = data.imageURLString
         rating = data.rating
     }
 }

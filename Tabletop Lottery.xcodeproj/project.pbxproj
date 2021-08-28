@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B509D3C126D942A900C53735 /* URLImageStore in Frameworks */ = {isa = PBXBuildFile; productRef = B509D3C026D942A900C53735 /* URLImageStore */; };
+		B509D3C326D942A900C53735 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = B509D3C226D942A900C53735 /* URLImage */; };
 		B54A586626D43DEA004EDF31 /* Tabletop_LotteryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A585326D43DE8004EDF31 /* Tabletop_LotteryApp.swift */; };
 		B54A586726D43DEA004EDF31 /* Tabletop_LotteryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A585326D43DE8004EDF31 /* Tabletop_LotteryApp.swift */; };
 		B54A586A26D43DEA004EDF31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B54A585526D43DEA004EDF31 /* Assets.xcassets */; };
@@ -33,8 +35,6 @@
 		B54A589226D54960004EDF31 /* LotteryWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A589026D54960004EDF31 /* LotteryWheelView.swift */; };
 		B54A589426D564A8004EDF31 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A589326D564A8004EDF31 /* Filter.swift */; };
 		B54A589526D564A8004EDF31 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A589326D564A8004EDF31 /* Filter.swift */; };
-		B54A589726D57942004EDF31 /* NumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A589626D57942004EDF31 /* NumberTextField.swift */; };
-		B54A589826D57942004EDF31 /* NumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A589626D57942004EDF31 /* NumberTextField.swift */; };
 		B54A589B26D6935C004EDF31 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = B54A589A26D6935C004EDF31 /* CodeScanner */; };
 		B54A589D26D6973F004EDF31 /* ScanResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A589C26D6973F004EDF31 /* ScanResult.swift */; };
 		B54A589E26D6973F004EDF31 /* ScanResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A589C26D6973F004EDF31 /* ScanResult.swift */; };
@@ -60,7 +60,6 @@
 		B54A588D26D5492A004EDF31 /* PlayGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayGameView.swift; sourceTree = "<group>"; };
 		B54A589026D54960004EDF31 /* LotteryWheelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryWheelView.swift; sourceTree = "<group>"; };
 		B54A589326D564A8004EDF31 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
-		B54A589626D57942004EDF31 /* NumberTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTextField.swift; sourceTree = "<group>"; };
 		B54A589C26D6973F004EDF31 /* ScanResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,6 +69,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B54A58A426D6E725004EDF31 /* XMLCoder in Frameworks */,
+				B509D3C126D942A900C53735 /* URLImageStore in Frameworks */,
+				B509D3C326D942A900C53735 /* URLImage in Frameworks */,
 				B54A589B26D6935C004EDF31 /* CodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -140,12 +141,11 @@
 			isa = PBXGroup;
 			children = (
 				B54A587526D43EE1004EDF31 /* TabletopGame.swift */,
+				B54A589C26D6973F004EDF31 /* ScanResult.swift */,
+				B54A589326D564A8004EDF31 /* Filter.swift */,
 				B54A587826D43F47004EDF31 /* History.swift */,
 				B54A587B26D43F86004EDF31 /* Color+Codable.swift */,
 				B54A588126D44987004EDF31 /* GameData.swift */,
-				B54A589326D564A8004EDF31 /* Filter.swift */,
-				B54A589626D57942004EDF31 /* NumberTextField.swift */,
-				B54A589C26D6973F004EDF31 /* ScanResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -169,6 +169,8 @@
 			packageProductDependencies = (
 				B54A589A26D6935C004EDF31 /* CodeScanner */,
 				B54A58A326D6E725004EDF31 /* XMLCoder */,
+				B509D3C026D942A900C53735 /* URLImageStore */,
+				B509D3C226D942A900C53735 /* URLImage */,
 			);
 			productName = "Tabletop Lottery (iOS)";
 			productReference = B54A585A26D43DEA004EDF31 /* Tabletop Lottery.app */;
@@ -220,6 +222,7 @@
 			packageReferences = (
 				B54A589926D6935C004EDF31 /* XCRemoteSwiftPackageReference "CodeScanner" */,
 				B54A58A226D6E725004EDF31 /* XCRemoteSwiftPackageReference "XMLCoder" */,
+				B509D3BF26D942A900C53735 /* XCRemoteSwiftPackageReference "url-image" */,
 			);
 			productRefGroup = B54A585B26D43DEA004EDF31 /* Products */;
 			projectDirPath = "";
@@ -266,7 +269,6 @@
 				B54A588826D44C5F004EDF31 /* EditView.swift in Sources */,
 				B54A587C26D43F86004EDF31 /* Color+Codable.swift in Sources */,
 				B54A589126D54960004EDF31 /* LotteryWheelView.swift in Sources */,
-				B54A589726D57942004EDF31 /* NumberTextField.swift in Sources */,
 				B54A588526D44C4D004EDF31 /* CardView.swift in Sources */,
 				B54A586626D43DEA004EDF31 /* Tabletop_LotteryApp.swift in Sources */,
 			);
@@ -287,7 +289,6 @@
 				B54A588926D44C5F004EDF31 /* EditView.swift in Sources */,
 				B54A587D26D43F86004EDF31 /* Color+Codable.swift in Sources */,
 				B54A589226D54960004EDF31 /* LotteryWheelView.swift in Sources */,
-				B54A589826D57942004EDF31 /* NumberTextField.swift in Sources */,
 				B54A588626D44C4D004EDF31 /* CardView.swift in Sources */,
 				B54A586726D43DEA004EDF31 /* Tabletop_LotteryApp.swift in Sources */,
 			);
@@ -533,6 +534,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B509D3BF26D942A900C53735 /* XCRemoteSwiftPackageReference "url-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.0;
+			};
+		};
 		B54A589926D6935C004EDF31 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/twostraws/CodeScanner";
@@ -552,6 +561,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B509D3C026D942A900C53735 /* URLImageStore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B509D3BF26D942A900C53735 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImageStore;
+		};
+		B509D3C226D942A900C53735 /* URLImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B509D3BF26D942A900C53735 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
+		};
 		B54A589A26D6935C004EDF31 /* CodeScanner */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B54A589926D6935C004EDF31 /* XCRemoteSwiftPackageReference "CodeScanner" */;

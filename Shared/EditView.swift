@@ -7,6 +7,7 @@
 
 import CodeScanner
 import SwiftUI
+import URLImage
 
 struct EditView: View {
     @Binding var gameData: TabletopGame.Data
@@ -16,8 +17,56 @@ struct EditView: View {
     @State private var isShowingErrorAlert: Bool = false
     @State private var scanningErrorMessage: String = ""
     @State private var scanResults: ScanResult = ScanResult()
+    @State private var isSelectingNewImage: Bool = false
+    @State var newImageURLString: String = ""
     var body: some View {
         List {
+            Section(header: Text("Game Image")) {
+                VStack {
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            isSelectingNewImage = true
+                        }) {
+                            VStack {
+                                ZStack {
+                                    if gameData.imageURLString != "" {
+                                        URLImage(URL(string: gameData.imageURLString)!) { image in
+                                            image
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: 150, height: 150)
+                                        }
+                                    } else {
+                                        Image(systemName: "cube.box.fill")
+                                            .frame(width: 150, height: 150)
+                                    }
+                                    if !isSelectingNewImage {
+                                        Text("Upload new image...")
+                                            .padding(.top, 130)
+                                            .padding(.horizontal)
+                                            .padding(.bottom, 10)
+                                            .background(Color.gray.opacity(0.5))
+                                            .font(.headline)
+                                            .foregroundColor(.black)
+                                    }
+                                }
+                            }
+                        }
+                        Spacer()
+                    }
+                    if isSelectingNewImage {
+                        HStack {
+                            Image(systemName: "photo")
+                            TextField("Image URL", text: $gameData.imageURLString)
+                                .padding()
+                            Button("Done") {
+                                isSelectingNewImage = false
+                            }
+                        }
+                    }
+                }
+            }
             Section(header: Text("Game Info")) {
                 TextField("Title", text: $gameData.title)
                 HStack {
@@ -107,6 +156,34 @@ struct EditView: View {
                     Image(systemName: "star.fill")
                 }
             }
+            Button(action: {
+                let scan = ScanResult()
+                scan.searchByName(gameTitle: gameData.title) { scanResult in
+                    self.gameData.title = scan.gameTitle
+                    switch scanResult {
+                    case .failure(let scanError):
+                        scanningErrorMessage = scan.errorMessage(error: scanError).replacingOccurrences(of: ".gameTitle", with: scan.gameTitle)
+                        self.isShowingErrorAlert = true
+                    case .success(let scannedGame):
+                        gameData.lengthInMinutes = Double(scannedGame.playingtime)
+                        gameData.minimumPlayers = Double(scannedGame.minplayers)
+                        gameData.maximumPlayers = Double(scannedGame.maxplayers)
+                        if scanResults.gameDetails.image != "" {
+                            gameData.imageURLString = scannedGame.image
+                        }
+                    }
+                }
+            }) {
+                HStack {
+                    Spacer()
+                    Label("Lookup Game Info", systemImage: "doc.text.magnifyingglass")
+                    Spacer()
+                }
+                .padding()
+            }
+            .alert(isPresented: $isShowingErrorAlert) {
+                Alert(title: Text("Lookup Error"), message: Text("\(scanningErrorMessage)"), dismissButton: .default(Text("Got it!")))
+            }
             if isNewGame {
                 HStack(alignment: .center) {
                     Spacer()
@@ -131,15 +208,26 @@ struct EditView: View {
                         Text("Min Players: \(scanResults.gameDetails.minplayers)")
                         Divider()
                         Text("Max Players: \(scanResults.gameDetails.maxplayers)")
+                        if scanResults.gameDetails.image != "" {
+                            Divider()
+                            let gameImageUrl: URL = URL(string: scanResults.gameDetails.image)!
+                            URLImage(gameImageUrl) { image in
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                            }
+                        }
+                        
                     }
                 }
             }
         }
         .listStyle(InsetGroupedListStyle())
         .sheet(isPresented: $isShowingScanner) {
-            CodeScannerView(codeTypes: [.qr,.code39,.code39Mod43,.code93,.code128,.ean8,.ean13,.interleaved2of5,.itf14,.upce], simulatedData: "824968717912", completion: handleScan)
+            CodeScannerView(codeTypes: [.qr,.code39,.code39Mod43,.code93,.code128,.ean8,.ean13,.interleaved2of5,.itf14,.upce], simulatedData: "3558380029564", completion: handleScan)
             // 3770001556185 (Tokaido)
             // 824968717912 (Ticket to Ride)
+            // 3558380029564 (Mysterium)
         }
         
         
@@ -151,7 +239,7 @@ struct EditView: View {
         switch result {
         case .success(let code):
             let scan = ScanResult(rawScanData: code)
-            scan.search() { scanResult in
+            scan.searchByCode() { scanResult in
                 gameData.title = scan.gameTitle
                 switch scanResult {
                 case .failure(let scanError):
@@ -161,6 +249,9 @@ struct EditView: View {
                     gameData.lengthInMinutes = Double(scannedGame.playingtime)
                     gameData.minimumPlayers = Double(scannedGame.minplayers)
                     gameData.maximumPlayers = Double(scannedGame.maxplayers)
+                    if scanResults.gameDetails.image != "" {
+                        gameData.imageURLString = scannedGame.image
+                    }
                 }
             }
 
@@ -174,6 +265,6 @@ struct EditView: View {
 
 struct EditView_Previews: PreviewProvider {
     static var previews: some View {
-        EditView(gameData: .constant(TabletopGame.data[3].data), games: .constant(TabletopGame.data), isNewGame: .constant(false))
+        EditView(gameData: .constant(TabletopGame.data[2].data), games: .constant(TabletopGame.data), isNewGame: .constant(false))
     }
 }

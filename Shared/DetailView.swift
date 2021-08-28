@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import URLImage
 
 struct DetailView: View {
     @Binding var game: TabletopGame
@@ -17,13 +18,28 @@ struct DetailView: View {
     var body: some View {
         List {
             HStack {
+                if game.imageURLString != "" {
+                    URLImage(game.imageURL()) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 150, height: 150)
+                    }
+                } else {
+                    Image(systemName: "cube.box.fill")
+                        .frame(width: 150, height: 150)
+                }
                 Spacer()
-                (game.rating >= 1) ? Image(systemName: "star.fill") : Image(systemName: "star")
-                (game.rating >= 2) ? Image(systemName: "star.fill") : Image(systemName: "star")
-                (game.rating >= 3) ? Image(systemName: "star.fill") : Image(systemName: "star")
-                (game.rating >= 4) ? Image(systemName: "star.fill") : Image(systemName: "star")
-                (game.rating >= 5) ? Image(systemName: "star.fill") : Image(systemName: "star")
-                Spacer()
+                game.ratingView()
+            }
+            NavigationLink(destination: PlayGameView(game: $game)) {
+                HStack {
+                    Spacer()
+                    Label("Play Game", systemImage: "play.rectangle")
+                        .font(.headline)
+                    Spacer()
+                }
+                .padding()
             }
             Section(header: Text("Game Info")) {
                 HStack {
@@ -79,6 +95,9 @@ struct DetailView: View {
                     HStack {
                         Image(systemName: "calendar")
                         Text(history.date, style: .date)
+                        Spacer()
+                        history.ratingView()
+                            .font(.caption)
                     }
                 }
             }

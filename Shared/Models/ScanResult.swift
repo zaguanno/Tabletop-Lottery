@@ -23,7 +23,8 @@ class ScanResult: Identifiable, Codable {
                                                                  yearpublished: "",
                                                                  minplayers: 2,
                                                                  maxplayers: 20,
-                                                                 playingtime: 0)
+                                                                 playingtime: 0,
+                                                                 image: "")
     
     init(rawScanData: String = "") {
         if rawScanData != "" {
@@ -31,7 +32,7 @@ class ScanResult: Identifiable, Codable {
         }
     }
     
-    func search(completion: @escaping (Result<BoardGames.BoardGame, APIFailure>) -> Void) {
+    func searchByCode(completion: @escaping (Result<BoardGames.BoardGame, APIFailure>) -> Void) {
         self.getGameFromCode() { result1 in
             switch result1 {
             case .failure(let error):
@@ -39,29 +40,41 @@ class ScanResult: Identifiable, Codable {
             case .success(let gameTitle):
                 print("Barcode API Search Complete")
                 print(gameTitle)
-                self.gameTitle = gameTitle
-                    
-                self.getGameIDFromDB(gameTitle: gameTitle) { result2 in
-                    switch result2 {
+                
+                self.searchByName(gameTitle: gameTitle) { result in
+                    switch result {
                     case .failure(let error):
                         completion(.failure(error))
-                    case .success(let gameID):
-                        print("Database Lookup Complete")
-                        print(gameID)
-                        self.gameDBID = gameID
-                                
-                        self.getGameDataFromDB(gameID: gameID) { result3 in
-                            switch result3 {
-                            case .failure(let error):
-                                completion(.failure(error))
-                            case .success(let gameData):
-                                print("Database Data Lookup Complete")
-                                print(gameData)
-                                self.gameDetails = gameData.boardgame[0]
-                                
-                                completion(.success(gameData.boardgame[0]))
-                            }
-                        }
+                    case .success(let game):
+                        completion(.success(game))
+                    }
+                }
+            }
+        }
+    }
+    
+    func searchByName(gameTitle: String, completion: @escaping (Result<BoardGames.BoardGame, APIFailure>) -> Void) {
+        self.gameTitle = gameTitle
+            
+        self.getGameIDFromDB(gameTitle: gameTitle) { result2 in
+            switch result2 {
+            case .failure(let error):
+                completion(.failure(error))
+            case .success(let gameID):
+                print("Database Lookup Complete")
+                print(gameID)
+                self.gameDBID = gameID
+                        
+                self.getGameDataFromDB(gameID: gameID) { result3 in
+                    switch result3 {
+                    case .failure(let error):
+                        completion(.failure(error))
+                    case .success(let gameData):
+                        print("Database Data Lookup Complete")
+                        print(gameData)
+                        self.gameDetails = gameData.boardgame[0]
+                        
+                        completion(.success(gameData.boardgame[0]))
                     }
                 }
             }
@@ -97,9 +110,12 @@ class ScanResult: Identifiable, Codable {
         }
     }
     
-    func getGameIDFromDB(gameTitle: String, completion: @escaping (Result<String, APIFailure>) -> Void) {
-        let urlGameTitle = gameTitle.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
-        let url = "https://www.boardgamegeek.com/xmlapi/search?exact=1&search=\(urlGameTitle)"
+    func getGameIDFromDB(gameTitle: String, exactMatch: Bool = true, completion: @escaping (Result<String, APIFailure>) -> Void) {
+        let urlGameTitle = gameTitle.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        var url = "https://www.boardgamegeek.com/xmlapi/search?search=\(urlGameTitle)"
+        if exactMatch {
+            url += "&exact=1"
+        }
         self.fetchData(from: url) { result in
             switch result {
                 case .success(let str):
@@ -107,6 +123,18 @@ class ScanResult: Identifiable, Codable {
                     let data = str.data(using: .utf8)!
                     print([url, str])
                     let gameDBSearch = try! XMLDecoder().decode(BoardGamesSearch.self, from: data)
+                    
+                    if gameDBSearch.boardgame.isEmpty && exactMatch {
+                        self.getGameIDFromDB(gameTitle: gameTitle, exactMatch: false) { result in
+                            switch result {
+                            case .failure(let error):
+                                completion(.failure(error))
+                            case .success(let success):
+                                completion(.success(success))
+                            }
+                        }
+                        return
+                    }
                     
                     if gameDBSearch.boardgame.isEmpty {
                         completion(.failure(.noDBResults))
@@ -239,6 +267,7 @@ class ScanResult: Identifiable, Codable {
             let minplayers: Int
             let maxplayers: Int
             let playingtime: Int
+            let image: String
             
             enum CodingKeys: String, CodingKey {
                 case objectid
@@ -248,6 +277,7 @@ class ScanResult: Identifiable, Codable {
                 case minplayers
                 case maxplayers
                 case playingtime
+                case image
             }
             
             static func nodeDecoding(for key: CodingKey) -> XMLDecoder.NodeDecoding {
