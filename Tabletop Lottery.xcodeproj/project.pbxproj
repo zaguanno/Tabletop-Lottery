@@ -11,6 +11,10 @@
 		B509D3C326D942A900C53735 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = B509D3C226D942A900C53735 /* URLImage */; };
 		B509D3C826D9D68A00C53735 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3C726D9D68A00C53735 /* Rating.swift */; };
 		B509D3C926D9D68A00C53735 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3C726D9D68A00C53735 /* Rating.swift */; };
+		B509D3CC26DAA9C700C53735 /* PlaythroughTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3CB26DAA9C700C53735 /* PlaythroughTimerView.swift */; };
+		B509D3CD26DAA9C700C53735 /* PlaythroughTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3CB26DAA9C700C53735 /* PlaythroughTimerView.swift */; };
+		B509D3CF26DAADE100C53735 /* PlaythroughProgressViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3CE26DAADE100C53735 /* PlaythroughProgressViewStyle.swift */; };
+		B509D3D026DAADE100C53735 /* PlaythroughProgressViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3CE26DAADE100C53735 /* PlaythroughProgressViewStyle.swift */; };
 		B54A586626D43DEA004EDF31 /* Tabletop_LotteryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A585326D43DE8004EDF31 /* Tabletop_LotteryApp.swift */; };
 		B54A586726D43DEA004EDF31 /* Tabletop_LotteryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A585326D43DE8004EDF31 /* Tabletop_LotteryApp.swift */; };
 		B54A586A26D43DEA004EDF31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B54A585526D43DEA004EDF31 /* Assets.xcassets */; };
@@ -31,8 +35,8 @@
 		B54A588926D44C5F004EDF31 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A588726D44C5F004EDF31 /* EditView.swift */; };
 		B54A588B26D44C6B004EDF31 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A588A26D44C6B004EDF31 /* DetailView.swift */; };
 		B54A588C26D44C6B004EDF31 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A588A26D44C6B004EDF31 /* DetailView.swift */; };
-		B54A588E26D5492A004EDF31 /* PlayGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A588D26D5492A004EDF31 /* PlayGameView.swift */; };
-		B54A588F26D5492A004EDF31 /* PlayGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A588D26D5492A004EDF31 /* PlayGameView.swift */; };
+		B54A588E26D5492A004EDF31 /* PlaythroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A588D26D5492A004EDF31 /* PlaythroughView.swift */; };
+		B54A588F26D5492A004EDF31 /* PlaythroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A588D26D5492A004EDF31 /* PlaythroughView.swift */; };
 		B54A589126D54960004EDF31 /* LotteryWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A589026D54960004EDF31 /* LotteryWheelView.swift */; };
 		B54A589226D54960004EDF31 /* LotteryWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A589026D54960004EDF31 /* LotteryWheelView.swift */; };
 		B54A589426D564A8004EDF31 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A589326D564A8004EDF31 /* Filter.swift */; };
@@ -46,6 +50,8 @@
 /* Begin PBXFileReference section */
 		B509D3C726D9D68A00C53735 /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		B509D3CA26D9EBC700C53735 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		B509D3CB26DAA9C700C53735 /* PlaythroughTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaythroughTimerView.swift; sourceTree = "<group>"; };
+		B509D3CE26DAADE100C53735 /* PlaythroughProgressViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaythroughProgressViewStyle.swift; sourceTree = "<group>"; };
 		B54A585326D43DE8004EDF31 /* Tabletop_LotteryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabletop_LotteryApp.swift; sourceTree = "<group>"; };
 		B54A585526D43DEA004EDF31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B54A585A26D43DEA004EDF31 /* Tabletop Lottery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tabletop Lottery.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,7 +67,7 @@
 		B54A588426D44C4D004EDF31 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		B54A588726D44C5F004EDF31 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		B54A588A26D44C6B004EDF31 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
-		B54A588D26D5492A004EDF31 /* PlayGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayGameView.swift; sourceTree = "<group>"; };
+		B54A588D26D5492A004EDF31 /* PlaythroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaythroughView.swift; sourceTree = "<group>"; };
 		B54A589026D54960004EDF31 /* LotteryWheelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryWheelView.swift; sourceTree = "<group>"; };
 		B54A589326D564A8004EDF31 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		B54A589C26D6973F004EDF31 /* ScanResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanResult.swift; sourceTree = "<group>"; };
@@ -110,8 +116,10 @@
 				B54A588426D44C4D004EDF31 /* CardView.swift */,
 				B54A588726D44C5F004EDF31 /* EditView.swift */,
 				B54A588A26D44C6B004EDF31 /* DetailView.swift */,
-				B54A588D26D5492A004EDF31 /* PlayGameView.swift */,
+				B54A588D26D5492A004EDF31 /* PlaythroughView.swift */,
 				B54A589026D54960004EDF31 /* LotteryWheelView.swift */,
+				B509D3CB26DAA9C700C53735 /* PlaythroughTimerView.swift */,
+				B509D3CE26DAADE100C53735 /* PlaythroughProgressViewStyle.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -271,13 +279,15 @@
 				B54A588B26D44C6B004EDF31 /* DetailView.swift in Sources */,
 				B54A587926D43F47004EDF31 /* Playthrough.swift in Sources */,
 				B509D3C826D9D68A00C53735 /* Rating.swift in Sources */,
-				B54A588E26D5492A004EDF31 /* PlayGameView.swift in Sources */,
+				B54A588E26D5492A004EDF31 /* PlaythroughView.swift in Sources */,
 				B54A588226D44987004EDF31 /* GameData.swift in Sources */,
 				B54A588826D44C5F004EDF31 /* EditView.swift in Sources */,
 				B54A587C26D43F86004EDF31 /* Color+Codable.swift in Sources */,
 				B54A589126D54960004EDF31 /* LotteryWheelView.swift in Sources */,
 				B54A588526D44C4D004EDF31 /* CardView.swift in Sources */,
 				B54A586626D43DEA004EDF31 /* Tabletop_LotteryApp.swift in Sources */,
+				B509D3CC26DAA9C700C53735 /* PlaythroughTimerView.swift in Sources */,
+				B509D3CF26DAADE100C53735 /* PlaythroughProgressViewStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,13 +302,15 @@
 				B54A588C26D44C6B004EDF31 /* DetailView.swift in Sources */,
 				B54A587A26D43F47004EDF31 /* Playthrough.swift in Sources */,
 				B509D3C926D9D68A00C53735 /* Rating.swift in Sources */,
-				B54A588F26D5492A004EDF31 /* PlayGameView.swift in Sources */,
+				B54A588F26D5492A004EDF31 /* PlaythroughView.swift in Sources */,
 				B54A588326D44987004EDF31 /* GameData.swift in Sources */,
 				B54A588926D44C5F004EDF31 /* EditView.swift in Sources */,
 				B54A587D26D43F86004EDF31 /* Color+Codable.swift in Sources */,
 				B54A589226D54960004EDF31 /* LotteryWheelView.swift in Sources */,
 				B54A588626D44C4D004EDF31 /* CardView.swift in Sources */,
 				B54A586726D43DEA004EDF31 /* Tabletop_LotteryApp.swift in Sources */,
+				B509D3CD26DAA9C700C53735 /* PlaythroughTimerView.swift in Sources */,
+				B509D3D026DAADE100C53735 /* PlaythroughProgressViewStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

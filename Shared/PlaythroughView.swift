@@ -7,14 +7,17 @@
 
 import SwiftUI
 
-struct PlayGameView: View {
+struct PlaythroughView: View {
     @Binding var game: TabletopGame
+    @StateObject var playthroughTimer = PlaythroughTimer()
     @State var currentPlayRating: Double = 0
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 16.0)
                 .fill(game.color)
             VStack {
+                Spacer()
+                PlaythroughTimerView(minutesElapsed: playthroughTimer.minutesElapsed, secondsElapsed: playthroughTimer.secondsElapsedLessMinutes, averagePlayTimeInSeconds: (playthroughTimer.averagePlayTimeInMinutes * 60), gameColor: game.color)
                 Section(header: Text("Rating")) {
                     HStack {
                         Slider(value: $currentPlayRating, in: 0...5, step: 0.5) {
@@ -31,15 +34,16 @@ struct PlayGameView: View {
                 .padding(.top)
                 Circle()
                     .strokeBorder(lineWidth: 24, antialiased: true)
-                //MeetingFooterView(speakers: scrumTimer.speakers, skipAction: scrumTimer.skipSpeaker)
             }
         }
         .padding()
         .foregroundColor(game.color.accessibleFontColor)
         .onAppear {
-            
+            playthroughTimer.reset(averagePlayTimeInMinutes: game.lengthInMinutes)
+            playthroughTimer.startPlaythrough()
         }
         .onDisappear {
+            playthroughTimer.stopPlaythrough()
             let newPlaythrough = Playthrough(lengthInMinutes: 0, rating: Rating(currentPlayRating))
             game.playthrough.insert(newPlaythrough, at: 0)
             game.recalculateRating()
@@ -50,6 +54,6 @@ struct PlayGameView: View {
 
 struct PlayGameView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayGameView(game: .constant(TabletopGame.data[0]))
+        PlaythroughView(game: .constant(TabletopGame.data[0]))
     }
 }

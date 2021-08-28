@@ -32,7 +32,7 @@ struct DetailView: View {
                 Spacer()
                 game.rating.ratingView()
             }
-            NavigationLink(destination: PlayGameView(game: $game)) {
+            NavigationLink(destination: PlaythroughView(game: $game)) {
                 HStack {
                     Spacer()
                     Label("Play Game", systemImage: "play.rectangle")
