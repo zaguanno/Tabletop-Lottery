@@ -94,7 +94,9 @@ struct LotteryWheelView: View {
     private func spinTheWheel() {
         noOptions = false
         let gameOptions = games.filter({(game:TabletopGame) -> Bool in
-            return (game.minimumPlayers <= Int(filter.numberOfPlayers) && game.maximumPlayers >= Int(filter.numberOfPlayers)) && game.rating.rating >= filter.minimumRating
+            return (game.minimumPlayers <= Int(filter.numberOfPlayers) && game.maximumPlayers >= Int(filter.numberOfPlayers))
+                && game.rating.rating >= filter.minimumRating
+                && game.lengthInMinutes <= Int(filter.maximumPlayTime)
         })
         
         let noResults: TabletopGame = TabletopGame(title: "No games match your criteria",
