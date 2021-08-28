@@ -28,7 +28,7 @@ struct CardView: View {
                     Text(game.title)
                         .font(.headline)
                     Spacer()
-                    game.ratingView()
+                    game.rating.ratingView()
                     .font(.caption)
                 }
                 Spacer()

@@ -17,7 +17,7 @@ struct TabletopGame: Identifiable, Codable {
     var maximumPlayers: Int
     var lengthInMinutes: Int
     var color: Color
-    var rating: Double
+    var rating: Rating
     var baseGameID: UUID?
     //var image: Image
     var imageURLString: String
@@ -34,7 +34,7 @@ struct TabletopGame: Identifiable, Codable {
          maximumPlayers: Int,
          lengthInMinutes: Int,
          color: Color,
-         rating: Double = 0.0,
+         rating: Rating = Rating(0),
          baseGameID: UUID? = nil,
          imageURLString: String = "",
          history: [History] = []) {
@@ -57,21 +57,8 @@ struct TabletopGame: Identifiable, Codable {
         return URL(string: self.imageURLString)!
     }
     
-    func ratingView() -> some View {
-        return rView(rating: self.rating)
-    }
-    
-    struct rView: View {
-        var rating: Double
-        var body: some View {
-            HStack {
-                (rating >= 1) ? Image(systemName: "star.fill") : Image(systemName: "star")
-                (rating >= 2) ? Image(systemName: "star.fill") : Image(systemName: "star")
-                (rating >= 3) ? Image(systemName: "star.fill") : Image(systemName: "star")
-                (rating >= 4) ? Image(systemName: "star.fill") : Image(systemName: "star")
-                (rating >= 5) ? Image(systemName: "star.fill") : Image(systemName: "star")
-            }
-        }
+    mutating func recalculateRating() {
+        rating = Rating(history.reduce(0) { ($0 + $1.rating.rating) } / Double(history.count))
     }
 }
 
@@ -83,7 +70,7 @@ extension TabletopGame {
                          maximumPlayers: 6,
                          lengthInMinutes: 60,
                          color: Color.blue,
-                         rating: 1),
+                         rating: Rating(1)),
             TabletopGame(title: "Clue, The Legend of Zelda Edition",
                          typeIsBase: false,
                          typeIsVariant: true,
@@ -91,13 +78,13 @@ extension TabletopGame {
                          maximumPlayers: 6,
                          lengthInMinutes: 60,
                          color: Color.green,
-                         rating: 2),
+                         rating: Rating(2)),
             TabletopGame(title: "Villainous",
                          minimumPlayers: 2,
                          maximumPlayers: 6,
                          lengthInMinutes: 90,
                          color: Color.purple,
-                         rating: 5,
+                         rating: Rating(5),
                          imageURLString:  "https://cf.geekdo-images.com/7Ej5V5Dq92QdvVFvISfl_A__original/img/XHykA7cqZ0F4tYiKXw095TvHRno=/0x0/filters:format(jpeg)/pic4216110.jpg"),
             TabletopGame(title: "Villainous: Pride",
                          typeIsBase: false,
@@ -107,7 +94,7 @@ extension TabletopGame {
                          maximumPlayers: 6,
                          lengthInMinutes: 90,
                          color: Color.purple,
-                         rating: 5)
+                         rating: Rating(5))
         ]
     }
 }
@@ -124,7 +111,7 @@ extension TabletopGame {
         var color: Color = .random
         var baseGameID: UUID?
         var imageURLString: String = ""
-        var rating: Double = 0.0
+        var rating: Rating = Rating(0)
     }
     
     var data: Data {

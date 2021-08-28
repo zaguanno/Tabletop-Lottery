@@ -30,7 +30,7 @@ struct DetailView: View {
                         .frame(width: 150, height: 150)
                 }
                 Spacer()
-                game.ratingView()
+                game.rating.ratingView()
             }
             NavigationLink(destination: PlayGameView(game: $game)) {
                 HStack {
@@ -96,7 +96,7 @@ struct DetailView: View {
                         Image(systemName: "calendar")
                         Text(history.date, style: .date)
                         Spacer()
-                        history.ratingView()
+                        history.rating.ratingView()
                             .font(.caption)
                     }
                 }

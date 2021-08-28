@@ -147,11 +147,11 @@ struct EditView: View {
             }
             Section(header: Text("Rating")) {
                 HStack {
-                    Slider(value: $gameData.rating, in: 0...5, step: 0.5) {
+                    Slider(value: $gameData.rating.rating, in: 0...5, step: 0.5) {
                         Text("Game Rating")
                     }
-                    .accessibilityValue(Text("Rated \(Int(gameData.rating)) stars"))
-                    Text("\(gameData.rating, specifier: "%.1f")")
+                    .accessibilityValue(Text("Rated \(Int(gameData.rating.rating)) stars"))
+                    Text("\(gameData.rating.rating, specifier: "%.1f")")
                         .accessibilityHidden(true)
                     Image(systemName: "star.fill")
                 }

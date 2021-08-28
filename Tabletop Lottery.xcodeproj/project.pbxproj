@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B509D3C126D942A900C53735 /* URLImageStore in Frameworks */ = {isa = PBXBuildFile; productRef = B509D3C026D942A900C53735 /* URLImageStore */; };
 		B509D3C326D942A900C53735 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = B509D3C226D942A900C53735 /* URLImage */; };
+		B509D3C826D9D68A00C53735 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3C726D9D68A00C53735 /* Rating.swift */; };
+		B509D3C926D9D68A00C53735 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3C726D9D68A00C53735 /* Rating.swift */; };
 		B54A586626D43DEA004EDF31 /* Tabletop_LotteryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A585326D43DE8004EDF31 /* Tabletop_LotteryApp.swift */; };
 		B54A586726D43DEA004EDF31 /* Tabletop_LotteryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A585326D43DE8004EDF31 /* Tabletop_LotteryApp.swift */; };
 		B54A586A26D43DEA004EDF31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B54A585526D43DEA004EDF31 /* Assets.xcassets */; };
@@ -42,6 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B509D3C726D9D68A00C53735 /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		B54A585326D43DE8004EDF31 /* Tabletop_LotteryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabletop_LotteryApp.swift; sourceTree = "<group>"; };
 		B54A585526D43DEA004EDF31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B54A585A26D43DEA004EDF31 /* Tabletop Lottery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tabletop Lottery.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +149,7 @@
 				B54A587826D43F47004EDF31 /* History.swift */,
 				B54A587B26D43F86004EDF31 /* Color+Codable.swift */,
 				B54A588126D44987004EDF31 /* GameData.swift */,
+				B509D3C726D9D68A00C53735 /* Rating.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -264,6 +268,7 @@
 				B54A589D26D6973F004EDF31 /* ScanResult.swift in Sources */,
 				B54A588B26D44C6B004EDF31 /* DetailView.swift in Sources */,
 				B54A587926D43F47004EDF31 /* History.swift in Sources */,
+				B509D3C826D9D68A00C53735 /* Rating.swift in Sources */,
 				B54A588E26D5492A004EDF31 /* PlayGameView.swift in Sources */,
 				B54A588226D44987004EDF31 /* GameData.swift in Sources */,
 				B54A588826D44C5F004EDF31 /* EditView.swift in Sources */,
@@ -284,6 +289,7 @@
 				B54A589E26D6973F004EDF31 /* ScanResult.swift in Sources */,
 				B54A588C26D44C6B004EDF31 /* DetailView.swift in Sources */,
 				B54A587A26D43F47004EDF31 /* History.swift in Sources */,
+				B509D3C926D9D68A00C53735 /* Rating.swift in Sources */,
 				B54A588F26D5492A004EDF31 /* PlayGameView.swift in Sources */,
 				B54A588326D44987004EDF31 /* GameData.swift in Sources */,
 				B54A588926D44C5F004EDF31 /* EditView.swift in Sources */,

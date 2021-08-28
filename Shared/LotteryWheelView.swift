@@ -16,7 +16,7 @@ struct LotteryWheelView: View {
                                                                  maximumPlayers: 0,
                                                                  lengthInMinutes: 0,
                                                                  color: Color.white,
-                                                                 rating: 0)
+                                                                 rating: Rating(0))
     @State private var filter: Filter = Filter(numberOfPlayers: 2, minimumRating: 0)
     var body: some View {
         VStack {
@@ -80,7 +80,7 @@ struct LotteryWheelView: View {
     private func spinTheWheel() {
         noOptions = false
         let gameOptions = games.filter({(game:TabletopGame) -> Bool in
-            return (game.minimumPlayers <= Int(filter.numberOfPlayers) && game.maximumPlayers >= Int(filter.numberOfPlayers)) && game.rating >= filter.minimumRating
+            return (game.minimumPlayers <= Int(filter.numberOfPlayers) && game.maximumPlayers >= Int(filter.numberOfPlayers)) && game.rating.rating >= filter.minimumRating
         })
         
         let noResults: TabletopGame = TabletopGame(title: "No games match your criteria",
@@ -88,7 +88,7 @@ struct LotteryWheelView: View {
                                      maximumPlayers: 0,
                                      lengthInMinutes: 0,
                                      color: Color.white,
-                                     rating: 0)
+                                     rating: Rating(0))
         if(gameOptions.isEmpty) {
             noOptions = true
         }
