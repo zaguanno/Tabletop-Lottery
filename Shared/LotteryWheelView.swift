@@ -17,7 +17,7 @@ struct LotteryWheelView: View {
                                                                  lengthInMinutes: 0,
                                                                  color: Color.white,
                                                                  rating: Rating(0))
-    @State private var filter: Filter = Filter(numberOfPlayers: 2, minimumRating: 0)
+    @State private var filter: Filter = Filter(numberOfPlayers: 2, minimumRating: 0, maximumPlayTime: 60)
     var body: some View {
         VStack {
             if wheelSpun {
@@ -39,24 +39,38 @@ struct LotteryWheelView: View {
                     }
                 }
             }
-            HStack {
-                VStack {
-                    Text("How many players?")
-                        .font(.caption)
-                    Slider(value: $filter.numberOfPlayers, in: 2...20, step: 1.0) {
-                        Text("Minimum Number of Players")
+            VStack {
+                HStack {
+                    VStack {
+                        Text("How many players?")
+                            .font(.caption)
+                        Slider(value: $filter.numberOfPlayers, in: 2...20, step: 1.0) {
+                            Text("Minimum Number of Players")
+                        }
+                        Text("\(Int(filter.numberOfPlayers))")
                     }
-                    Text("\(Int(filter.numberOfPlayers))")
-                }
-                Spacer()
-                VStack {
-                    Text("Minimum star rating?")
-                        .font(.caption)
-                    Slider(value: $filter.minimumRating, in: 0...5, step: 0.5) {
-                        Text("Minimum star rating")
+                    Spacer()
+                    VStack {
+                        Text("Minimum star rating?")
+                            .font(.caption)
+                        Slider(value: $filter.minimumRating, in: 0...5, step: 0.5) {
+                            Text("Minimum star rating")
+                        }
+                        Text("\(filter.minimumRating, specifier: "%.1f")")
                     }
-                    Text("\(filter.minimumRating, specifier: "%.1f")")
                 }
+                .padding(.vertical)
+                HStack {
+                    VStack {
+                        Text("How long do you want to play?")
+                            .font(.caption)
+                        Slider(value: $filter.maximumPlayTime, in: 5...120, step: 1.0) {
+                            Text("Maximum Play Time")
+                        }
+                        Text("\(Int(filter.maximumPlayTime)) mins")
+                    }
+                }
+                .padding(.vertical)
             }
             .padding(.horizontal)
             Button {
