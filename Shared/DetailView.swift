@@ -96,8 +96,11 @@ struct DetailView: View {
                         Image(systemName: "calendar")
                         Text(playthrough.date, style: .date)
                         Spacer()
-                        playthrough.rating.ratingView()
-                            .font(.caption)
+                        VStack {
+                            playthrough.rating.ratingView()
+                            Text("\(playthrough.lengthInMinutes) mins")
+                        }
+                        .font(.caption)
                     }
                 }
             }

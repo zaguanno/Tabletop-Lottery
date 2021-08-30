@@ -1,7 +1,7 @@
 #  Tabletop Lottery
 
 ToDo Feature List
-- [ ] Play Timer
+- [x] Play Timer
 - [ ] Libraries
 - [ ] Connecting Expansions to Base games
 - [ ] icons for base vs expansion vs variant

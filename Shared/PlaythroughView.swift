@@ -11,13 +11,44 @@ struct PlaythroughView: View {
     @Binding var game: TabletopGame
     @StateObject var playthroughTimer = PlaythroughTimer()
     @State var currentPlayRating: Double = 0
+    @State var newPlaythrough: Playthrough = Playthrough(lengthInMinutes: 0, rating: Rating(0))
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 16.0)
                 .fill(game.color)
             VStack {
                 Spacer()
-                PlaythroughTimerView(minutesElapsed: playthroughTimer.minutesElapsed, secondsElapsed: playthroughTimer.secondsElapsedLessMinutes, averagePlayTimeInSeconds: (playthroughTimer.averagePlayTimeInMinutes * 60), gameColor: game.color)
+                ZStack {
+                    Circle()
+                        .strokeBorder(lineWidth: 24, antialiased: true)
+                    VStack {
+                        Button(action: {
+                            playthroughTimer.reset(averagePlayTimeInMinutes: game.lengthInMinutes)
+                            playthroughTimer.startPlaythrough()
+                        }) {
+                            HStack {
+                                Spacer()
+                                Label("Start Game", systemImage: "play.fill")
+                                Spacer()
+                            }
+                            .padding()
+                        }
+                        Spacer()
+                        PlaythroughTimerView(minutesElapsed: playthroughTimer.minutesElapsed, secondsElapsed: playthroughTimer.secondsElapsedLessMinutes, averagePlayTimeInSeconds: (playthroughTimer.averagePlayTimeInMinutes * 60), gameColor: game.color)
+                        Spacer()
+                        Button(action: {
+                            playthroughTimer.stopPlaythrough()
+                            newPlaythrough = Playthrough(lengthInMinutes: playthroughTimer.minutesElapsed, rating: Rating(currentPlayRating))
+                        }) {
+                            HStack {
+                                Spacer()
+                                Label("Stop Game", systemImage: "stop.fill")
+                                Spacer()
+                            }
+                            .padding()
+                        }
+                    }
+                }
                 Section(header: Text("Rating")) {
                     HStack {
                         Slider(value: $currentPlayRating, in: 0...5, step: 0.5) {
@@ -31,20 +62,15 @@ struct PlaythroughView: View {
                     .background(Color.white)
                     .foregroundColor(game.color)
                 }
-                .padding(.top)
-                Circle()
-                    .strokeBorder(lineWidth: 24, antialiased: true)
+                .padding()
             }
         }
         .padding()
         .foregroundColor(game.color.accessibleFontColor)
         .onAppear {
-            playthroughTimer.reset(averagePlayTimeInMinutes: game.lengthInMinutes)
-            playthroughTimer.startPlaythrough()
         }
         .onDisappear {
-            playthroughTimer.stopPlaythrough()
-            let newPlaythrough = Playthrough(lengthInMinutes: 0, rating: Rating(currentPlayRating))
+            newPlaythrough = Playthrough(lengthInMinutes: playthroughTimer.minutesElapsed, rating: Rating(currentPlayRating))
             game.playthrough.insert(newPlaythrough, at: 0)
             game.recalculateRating()
         }

@@ -52,7 +52,7 @@ struct PlaythroughTimerView: View {
             
         }
         .padding(.horizontal)
-        .frame(height: 125)
+        .frame(width: 300, height: 125)
     }
 }
 
