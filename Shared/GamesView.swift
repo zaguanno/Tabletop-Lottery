@@ -21,7 +21,7 @@ struct GamesView: View {
                 NavigationLink(destination: DetailView(game: binding(for: game), games: $games)) {
                     CardView(game: game)
                 }
-                .listRowBackground(game.color)
+                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
             }
             .onDelete(perform: deleteGame)
         }

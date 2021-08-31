@@ -13,6 +13,7 @@ struct Tabletop_LotteryApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
+                //MenuBarView(games: $data.games) {
                 GamesView(games: $data.games) {
                     data.save()
                 }

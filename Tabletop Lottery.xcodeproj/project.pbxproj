@@ -15,6 +15,10 @@
 		B509D3CD26DAA9C700C53735 /* PlaythroughTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3CB26DAA9C700C53735 /* PlaythroughTimerView.swift */; };
 		B509D3CF26DAADE100C53735 /* PlaythroughProgressViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3CE26DAADE100C53735 /* PlaythroughProgressViewStyle.swift */; };
 		B509D3D026DAADE100C53735 /* PlaythroughProgressViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3CE26DAADE100C53735 /* PlaythroughProgressViewStyle.swift */; };
+		B509D3D226DD787300C53735 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3D126DD787300C53735 /* MenuBarView.swift */; };
+		B509D3D326DD787300C53735 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3D126DD787300C53735 /* MenuBarView.swift */; };
+		B509D3D526DECBE900C53735 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3D426DECBE800C53735 /* Library.swift */; };
+		B509D3D626DECBE900C53735 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3D426DECBE800C53735 /* Library.swift */; };
 		B54A586626D43DEA004EDF31 /* Tabletop_LotteryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A585326D43DE8004EDF31 /* Tabletop_LotteryApp.swift */; };
 		B54A586726D43DEA004EDF31 /* Tabletop_LotteryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A585326D43DE8004EDF31 /* Tabletop_LotteryApp.swift */; };
 		B54A586A26D43DEA004EDF31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B54A585526D43DEA004EDF31 /* Assets.xcassets */; };
@@ -52,6 +56,8 @@
 		B509D3CA26D9EBC700C53735 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B509D3CB26DAA9C700C53735 /* PlaythroughTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaythroughTimerView.swift; sourceTree = "<group>"; };
 		B509D3CE26DAADE100C53735 /* PlaythroughProgressViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaythroughProgressViewStyle.swift; sourceTree = "<group>"; };
+		B509D3D126DD787300C53735 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
+		B509D3D426DECBE800C53735 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		B54A585326D43DE8004EDF31 /* Tabletop_LotteryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabletop_LotteryApp.swift; sourceTree = "<group>"; };
 		B54A585526D43DEA004EDF31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B54A585A26D43DEA004EDF31 /* Tabletop Lottery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tabletop Lottery.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +126,7 @@
 				B54A589026D54960004EDF31 /* LotteryWheelView.swift */,
 				B509D3CB26DAA9C700C53735 /* PlaythroughTimerView.swift */,
 				B509D3CE26DAADE100C53735 /* PlaythroughProgressViewStyle.swift */,
+				B509D3D126DD787300C53735 /* MenuBarView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -160,6 +167,7 @@
 				B54A587B26D43F86004EDF31 /* Color+Codable.swift */,
 				B54A588126D44987004EDF31 /* GameData.swift */,
 				B509D3C726D9D68A00C53735 /* Rating.swift */,
+				B509D3D426DECBE800C53735 /* Library.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -276,6 +284,7 @@
 				B54A589426D564A8004EDF31 /* Filter.swift in Sources */,
 				B54A587626D43EE1004EDF31 /* TabletopGame.swift in Sources */,
 				B54A589D26D6973F004EDF31 /* ScanResult.swift in Sources */,
+				B509D3D226DD787300C53735 /* MenuBarView.swift in Sources */,
 				B54A588B26D44C6B004EDF31 /* DetailView.swift in Sources */,
 				B54A587926D43F47004EDF31 /* Playthrough.swift in Sources */,
 				B509D3C826D9D68A00C53735 /* Rating.swift in Sources */,
@@ -288,6 +297,7 @@
 				B54A586626D43DEA004EDF31 /* Tabletop_LotteryApp.swift in Sources */,
 				B509D3CC26DAA9C700C53735 /* PlaythroughTimerView.swift in Sources */,
 				B509D3CF26DAADE100C53735 /* PlaythroughProgressViewStyle.swift in Sources */,
+				B509D3D526DECBE900C53735 /* Library.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +309,7 @@
 				B54A589526D564A8004EDF31 /* Filter.swift in Sources */,
 				B54A587726D43EE1004EDF31 /* TabletopGame.swift in Sources */,
 				B54A589E26D6973F004EDF31 /* ScanResult.swift in Sources */,
+				B509D3D326DD787300C53735 /* MenuBarView.swift in Sources */,
 				B54A588C26D44C6B004EDF31 /* DetailView.swift in Sources */,
 				B54A587A26D43F47004EDF31 /* Playthrough.swift in Sources */,
 				B509D3C926D9D68A00C53735 /* Rating.swift in Sources */,
@@ -311,6 +322,7 @@
 				B54A586726D43DEA004EDF31 /* Tabletop_LotteryApp.swift in Sources */,
 				B509D3CD26DAA9C700C53735 /* PlaythroughTimerView.swift in Sources */,
 				B509D3D026DAADE100C53735 /* PlaythroughProgressViewStyle.swift in Sources */,
+				B509D3D626DECBE900C53735 /* Library.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
