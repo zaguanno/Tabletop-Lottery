@@ -10,23 +10,31 @@ import SwiftUI
 
 struct Library: Identifiable, Codable {
     let id: UUID
-    var name: String
+    var title: String
     var color: Color
     var games: [TabletopGame]
+    var dummy: Bool = false
     
-    init(id: UUID = UUID(), name: String = "", color: Color = Color.random, games: [TabletopGame] = []) {
+    init(id: UUID = UUID(), title: String = "", color: Color = Color.random, games: [TabletopGame] = [], dummy: Bool = false) {
         self.id = id
-        self.name = name
+        self.title = title
         self.color = color
         self.games = games
+        self.dummy = dummy
+    }
+    
+    mutating func updateDetails(_ lib: Library) {
+        self.title = lib.title
+        self.color = lib.color
+        self.games = lib.games
     }
 }
 
 extension Library {
     static var data: [Library] {
         [
-            Library(name: "Home", color: Color.green, games: TabletopGame.data),
-            Library(name: "The Schierleanes", color: Color.blue, games: TabletopGame.data)
+            Library(title: "Home", color: Color.green, games: TabletopGame.data),
+            Library(title: "Kids", color: Color.blue, games: TabletopGame.data2)
         ]
     }
 }

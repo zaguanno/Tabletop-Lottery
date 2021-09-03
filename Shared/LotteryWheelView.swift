@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LotteryWheelView: View {
+    @EnvironmentObject var libraryData: LibraryData
     @Binding var games: [TabletopGame]
     @State private var wheelSpun: Bool = false
     @State private var noOptions: Bool = false
@@ -17,28 +18,24 @@ struct LotteryWheelView: View {
                                                                  lengthInMinutes: 0,
                                                                  color: Color.white,
                                                                  rating: Rating(0))
-    @State private var filter: Filter = Filter(numberOfPlayers: 2, minimumRating: 0, maximumPlayTime: 60)
+    @State private var filter: Filter = Filter(numberOfPlayers: 2, minimumRating: 0, maximumPlayTime: 60, playthroughState: .allGames)
     var body: some View {
         VStack {
-            if wheelSpun {
-                List {
-                    if(noOptions) {
-                        HStack {
-                            Image(systemName: "exclamationmark.octagon.fill")
-                                .foregroundColor(Color.red)
-                            Text("No games match your criteria!")
-                        }
-                    } else {
-                        Spacer()
-                        NavigationLink(destination: DetailView(game: binding(for: selectedGame), games: $games
-                        )) {
-                            CardView(game: selectedGame)
-                        }
-                        .listRowBackground(selectedGame.color)
-                        Spacer()
+            List {
+                if(noOptions) {
+                    HStack {
+                        Image(systemName: "exclamationmark.octagon.fill")
+                            .foregroundColor(Color.red)
+                        Text("No games match your criteria!")
                     }
+                } else {
+                    NavigationLink(destination: DetailView(game: $selectedGame, games: $games)) {
+                        CardView(game: selectedGame)
+                    }
+                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                 }
             }
+            .opacity(wheelSpun ? 1 : 0)
             VStack {
                 HStack {
                     VStack {
@@ -61,6 +58,13 @@ struct LotteryWheelView: View {
                 }
                 .padding(.vertical)
                 HStack {
+                    Picker(selection: $filter.playthroughState, label: Text("")) {
+                        Text("New Games").tag(PlaythroughState.newGamesOnly)
+                        Text("All Games").tag(PlaythroughState.allGames)
+                        Text("Played Games").tag(PlaythroughState.playedGamesOnly)
+                    }.pickerStyle(SegmentedPickerStyle())
+                }
+                HStack {
                     VStack {
                         Text("How long do you want to play?")
                             .font(.caption)
@@ -80,8 +84,14 @@ struct LotteryWheelView: View {
                 Text("Spin the Wheel")
                     .padding(20)
             }
-            .contentShape(Rectangle())
             .background(Color.green)
+            .contentShape(Rectangle())
+            .clipShape(RoundedRectangle(cornerRadius: 25))
+            .padding()
+        }
+        .navigationTitle("\(libraryData.activeLibrary.title)")
+        .onAppear() {
+            wheelSpun = false
         }
     }
     
@@ -93,11 +103,7 @@ struct LotteryWheelView: View {
     }
     private func spinTheWheel() {
         noOptions = false
-        let gameOptions = games.filter({(game:TabletopGame) -> Bool in
-            return (game.minimumPlayers <= Int(filter.numberOfPlayers) && game.maximumPlayers >= Int(filter.numberOfPlayers))
-                && game.rating.rating >= filter.minimumRating
-                && game.lengthInMinutes <= Int(filter.maximumPlayTime)
-        })
+        let gameOptions = filter.filterGameOptions(allGames: games)
         
         let noResults: TabletopGame = TabletopGame(title: "No games match your criteria",
                                      minimumPlayers: 0,
@@ -114,6 +120,11 @@ struct LotteryWheelView: View {
 
 struct LotteryWheelView_Previews: PreviewProvider {
     static var previews: some View {
+        let libraryData: LibraryData = LibraryData()
         LotteryWheelView(games: .constant(TabletopGame.data))
+            .environmentObject(libraryData)
+            .onAppear() {
+                libraryData.load()
+            }
     }
 }

@@ -97,6 +97,23 @@ extension TabletopGame {
                          rating: Rating(5))
         ]
     }
+    
+    static var data2: [TabletopGame] {
+        [
+            TabletopGame(title: "Trouble",
+                         minimumPlayers: 2,
+                         maximumPlayers: 4,
+                         lengthInMinutes: 30,
+                         color: Color.yellow,
+                         rating: Rating(1)),
+            TabletopGame(title: "Hoot!",
+                         minimumPlayers: 2,
+                         maximumPlayers: 4,
+                         lengthInMinutes: 30,
+                         color: Color.blue,
+                         rating: Rating(2))
+        ]
+    }
 }
 
 extension TabletopGame {

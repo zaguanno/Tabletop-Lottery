@@ -70,9 +70,11 @@ struct PlaythroughView: View {
         .onAppear {
         }
         .onDisappear {
-            newPlaythrough = Playthrough(lengthInMinutes: playthroughTimer.minutesElapsed, rating: Rating(currentPlayRating))
-            game.playthrough.insert(newPlaythrough, at: 0)
-            game.recalculateRating()
+            if(playthroughTimer.secondsElapsed > 0) {
+                newPlaythrough = Playthrough(lengthInMinutes: playthroughTimer.minutesElapsed, rating: Rating(currentPlayRating))
+                game.playthrough.insert(newPlaythrough, at: 0)
+                game.recalculateRating()
+            }
         }
         .navigationTitle(game.title)
     }

@@ -19,6 +19,14 @@
 		B509D3D326DD787300C53735 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3D126DD787300C53735 /* MenuBarView.swift */; };
 		B509D3D526DECBE900C53735 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3D426DECBE800C53735 /* Library.swift */; };
 		B509D3D626DECBE900C53735 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3D426DECBE800C53735 /* Library.swift */; };
+		B509D3D926DFC83E00C53735 /* LibraryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3D826DFC83E00C53735 /* LibraryData.swift */; };
+		B509D3DA26DFC83F00C53735 /* LibraryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3D826DFC83E00C53735 /* LibraryData.swift */; };
+		B509D3DC26DFCBEB00C53735 /* LibrariesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3DB26DFCBEB00C53735 /* LibrariesView.swift */; };
+		B509D3DD26DFCBEB00C53735 /* LibrariesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3DB26DFCBEB00C53735 /* LibrariesView.swift */; };
+		B509D3DF26DFD1CA00C53735 /* LibraryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3DE26DFD1CA00C53735 /* LibraryCardView.swift */; };
+		B509D3E026DFD1CA00C53735 /* LibraryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3DE26DFD1CA00C53735 /* LibraryCardView.swift */; };
+		B509D3E226E145C800C53735 /* LibraryEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3E126E145C800C53735 /* LibraryEditView.swift */; };
+		B509D3E326E145C800C53735 /* LibraryEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3E126E145C800C53735 /* LibraryEditView.swift */; };
 		B54A586626D43DEA004EDF31 /* Tabletop_LotteryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A585326D43DE8004EDF31 /* Tabletop_LotteryApp.swift */; };
 		B54A586726D43DEA004EDF31 /* Tabletop_LotteryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A585326D43DE8004EDF31 /* Tabletop_LotteryApp.swift */; };
 		B54A586A26D43DEA004EDF31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B54A585526D43DEA004EDF31 /* Assets.xcassets */; };
@@ -58,6 +66,10 @@
 		B509D3CE26DAADE100C53735 /* PlaythroughProgressViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaythroughProgressViewStyle.swift; sourceTree = "<group>"; };
 		B509D3D126DD787300C53735 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
 		B509D3D426DECBE800C53735 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
+		B509D3D826DFC83E00C53735 /* LibraryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryData.swift; sourceTree = "<group>"; };
+		B509D3DB26DFCBEB00C53735 /* LibrariesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibrariesView.swift; sourceTree = "<group>"; };
+		B509D3DE26DFD1CA00C53735 /* LibraryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCardView.swift; sourceTree = "<group>"; };
+		B509D3E126E145C800C53735 /* LibraryEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryEditView.swift; sourceTree = "<group>"; };
 		B54A585326D43DE8004EDF31 /* Tabletop_LotteryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabletop_LotteryApp.swift; sourceTree = "<group>"; };
 		B54A585526D43DEA004EDF31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B54A585A26D43DEA004EDF31 /* Tabletop Lottery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tabletop Lottery.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +113,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B509D3D726DFC7E600C53735 /* DataStorage */ = {
+			isa = PBXGroup;
+			children = (
+				B509D3D826DFC83E00C53735 /* LibraryData.swift */,
+			);
+			path = DataStorage;
+			sourceTree = "<group>";
+		};
 		B54A584D26D43DE8004EDF31 = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +135,7 @@
 		B54A585226D43DE8004EDF31 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				B509D3D726DFC7E600C53735 /* DataStorage */,
 				B54A585526D43DEA004EDF31 /* Assets.xcassets */,
 				B54A587426D43EA0004EDF31 /* Models */,
 				B54A585326D43DE8004EDF31 /* Tabletop_LotteryApp.swift */,
@@ -127,6 +148,9 @@
 				B509D3CB26DAA9C700C53735 /* PlaythroughTimerView.swift */,
 				B509D3CE26DAADE100C53735 /* PlaythroughProgressViewStyle.swift */,
 				B509D3D126DD787300C53735 /* MenuBarView.swift */,
+				B509D3DB26DFCBEB00C53735 /* LibrariesView.swift */,
+				B509D3DE26DFD1CA00C53735 /* LibraryCardView.swift */,
+				B509D3E126E145C800C53735 /* LibraryEditView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -286,15 +310,19 @@
 				B54A589D26D6973F004EDF31 /* ScanResult.swift in Sources */,
 				B509D3D226DD787300C53735 /* MenuBarView.swift in Sources */,
 				B54A588B26D44C6B004EDF31 /* DetailView.swift in Sources */,
+				B509D3E226E145C800C53735 /* LibraryEditView.swift in Sources */,
 				B54A587926D43F47004EDF31 /* Playthrough.swift in Sources */,
 				B509D3C826D9D68A00C53735 /* Rating.swift in Sources */,
 				B54A588E26D5492A004EDF31 /* PlaythroughView.swift in Sources */,
+				B509D3D926DFC83E00C53735 /* LibraryData.swift in Sources */,
 				B54A588226D44987004EDF31 /* GameData.swift in Sources */,
 				B54A588826D44C5F004EDF31 /* EditView.swift in Sources */,
 				B54A587C26D43F86004EDF31 /* Color+Codable.swift in Sources */,
 				B54A589126D54960004EDF31 /* LotteryWheelView.swift in Sources */,
+				B509D3DC26DFCBEB00C53735 /* LibrariesView.swift in Sources */,
 				B54A588526D44C4D004EDF31 /* CardView.swift in Sources */,
 				B54A586626D43DEA004EDF31 /* Tabletop_LotteryApp.swift in Sources */,
+				B509D3DF26DFD1CA00C53735 /* LibraryCardView.swift in Sources */,
 				B509D3CC26DAA9C700C53735 /* PlaythroughTimerView.swift in Sources */,
 				B509D3CF26DAADE100C53735 /* PlaythroughProgressViewStyle.swift in Sources */,
 				B509D3D526DECBE900C53735 /* Library.swift in Sources */,
@@ -311,15 +339,19 @@
 				B54A589E26D6973F004EDF31 /* ScanResult.swift in Sources */,
 				B509D3D326DD787300C53735 /* MenuBarView.swift in Sources */,
 				B54A588C26D44C6B004EDF31 /* DetailView.swift in Sources */,
+				B509D3E326E145C800C53735 /* LibraryEditView.swift in Sources */,
 				B54A587A26D43F47004EDF31 /* Playthrough.swift in Sources */,
 				B509D3C926D9D68A00C53735 /* Rating.swift in Sources */,
 				B54A588F26D5492A004EDF31 /* PlaythroughView.swift in Sources */,
+				B509D3DA26DFC83F00C53735 /* LibraryData.swift in Sources */,
 				B54A588326D44987004EDF31 /* GameData.swift in Sources */,
 				B54A588926D44C5F004EDF31 /* EditView.swift in Sources */,
 				B54A587D26D43F86004EDF31 /* Color+Codable.swift in Sources */,
 				B54A589226D54960004EDF31 /* LotteryWheelView.swift in Sources */,
+				B509D3DD26DFCBEB00C53735 /* LibrariesView.swift in Sources */,
 				B54A588626D44C4D004EDF31 /* CardView.swift in Sources */,
 				B54A586726D43DEA004EDF31 /* Tabletop_LotteryApp.swift in Sources */,
+				B509D3E026DFD1CA00C53735 /* LibraryCardView.swift in Sources */,
 				B509D3CD26DAA9C700C53735 /* PlaythroughTimerView.swift in Sources */,
 				B509D3D026DAADE100C53735 /* PlaythroughProgressViewStyle.swift in Sources */,
 				B509D3D626DECBE900C53735 /* Library.swift in Sources */,

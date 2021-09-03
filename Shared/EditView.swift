@@ -168,7 +168,7 @@ struct EditView: View {
                         gameData.lengthInMinutes = Double(scannedGame.playingtime)
                         gameData.minimumPlayers = Double(scannedGame.minplayers)
                         gameData.maximumPlayers = Double(scannedGame.maxplayers)
-                        if scanResults.gameDetails.image != "" {
+                        if scannedGame.image != "" {
                             gameData.imageURLString = scannedGame.image
                         }
                     }

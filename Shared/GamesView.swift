@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct GamesView: View {
+    @EnvironmentObject var libraryData: LibraryData
     @Binding var games: [TabletopGame]
     @Environment(\.scenePhase) private var scenePhase
     @State private var isNewGamePresented = false
-    @State private var isWheelPresented = false
     @State private var newGameData = TabletopGame.Data()
     let saveAction: () -> Void
     
     var body: some View {
         List {
-            ForEach(games) {game in
+            ForEach(games) { game in
                 NavigationLink(destination: DetailView(game: binding(for: game), games: $games)) {
                     CardView(game: game)
                 }
@@ -28,24 +28,12 @@ struct GamesView: View {
         .toolbar {
             EditButton()
         }
-        .navigationTitle("My Tabletop Games")
-        .navigationBarItems(leading: Button(action: {
-            isWheelPresented = true
-        }) {
-            Label("Spin the Wheel", systemImage: "arrow.2.circlepath")
-        }, trailing: Button(action: {
+        .navigationTitle("\(libraryData.activeLibrary.title) Games")
+        .navigationBarItems(trailing: Button(action: {
             isNewGamePresented = true
         }) {
             Image(systemName: "plus")
         })
-        .sheet(isPresented: $isWheelPresented) {
-            NavigationView {
-                LotteryWheelView(games: $games)
-                    .navigationBarItems(leading: Button("Dismiss") {
-                        isWheelPresented = false
-                    })
-            }
-        }
         .sheet(isPresented: $isNewGamePresented) {
             NavigationView {
                 EditView(gameData: $newGameData, games: $games, isNewGame: $isNewGamePresented)
@@ -89,8 +77,13 @@ struct GamesView: View {
 
 struct GamesView_Previews: PreviewProvider {
     static var previews: some View {
+        let libraryData = LibraryData()
         NavigationView {
             GamesView(games: .constant(TabletopGame.data), saveAction: {})
+            .environmentObject(libraryData)
+            .onAppear() {
+                libraryData.load()
+            }
         }
     }
 }
