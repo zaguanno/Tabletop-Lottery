@@ -45,7 +45,7 @@ struct MenuBarView: View {
             .tag(2)
             
             NavigationView {
-                GamesView(games: $games, saveAction: saveAction)
+                EmptyView()
             }
             .tabItem {
                 Label("Search", systemImage: "questionmark")
@@ -53,7 +53,7 @@ struct MenuBarView: View {
             .tag(3)
             
             NavigationView {
-                GamesView(games: $games, saveAction: saveAction)
+                EmptyView()
             }
             .tabItem {
                 Label("Players", systemImage: "questionmark")

@@ -2,7 +2,7 @@
 
 ToDo Feature List
 - [x] Play Timer
-- [ ] Libraries
+- [x] Libraries
 - [ ] Connecting Expansions to Base games
 - [ ] icons for base vs expansion vs variant
 - [ ] Visual for Wheel (is it a wheel?)
