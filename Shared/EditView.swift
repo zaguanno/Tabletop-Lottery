@@ -74,32 +74,33 @@ struct EditView: View {
                         Text("Base Game")
                             .font(.caption)
                         HStack {
-                            Image(systemName: "rectangle")
+                            Image(systemName: GameTypeIcon.base.rawValue)
                                 .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                             Toggle("", isOn: $gameData.typeIsBase)
                         }
                     }
-                    Spacer()
+                    Divider()
                     VStack {
                         Text("Expansion")
                             .font(.caption)
                         HStack {
-                            Image(systemName: "plus.rectangle.on.rectangle")
+                            Image(systemName: GameTypeIcon.expansion.rawValue)
                                 .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                             Toggle("", isOn: $gameData.typeIsExpansion)
                         }
                     }
-                    Spacer()
+                    Divider()
                     VStack {
                         Text("Variant")
                             .font(.caption)
                         HStack {
-                            Image(systemName: "rectangle.on.rectangle.angled.fill")
+                            Image(systemName: GameTypeIcon.variant.rawValue)
                                 .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                             Toggle("", isOn: $gameData.typeIsVariant)
                         }
                     }
                 }
+                .padding(.leading, -10)
                 //TODO: Picker for connecting Expansion to Base
                /*if gameData.typeIsExpansion {
                     HStack {
@@ -131,7 +132,7 @@ struct EditView: View {
                     Text("Min \(Int(gameData.minimumPlayers))")
                         .accessibilityHidden(true)
                         .font(.caption)
-                    Slider(value: $gameData.minimumPlayers, in: 2...gameData.maximumPlayers, step: 1.0) {
+                    Slider(value: $gameData.minimumPlayers, in: 1...gameData.maximumPlayers, step: 1.0) {
                         Text("Minimum Number of Players")
                     }
                     .accessibilityValue(Text("\(Int(gameData.minimumPlayers)) players minimum"))
@@ -159,12 +160,12 @@ struct EditView: View {
             Button(action: {
                 let scan = ScanResult()
                 scan.searchByName(gameTitle: gameData.title) { scanResult in
-                    self.gameData.title = scan.gameTitle
                     switch scanResult {
                     case .failure(let scanError):
                         scanningErrorMessage = scan.errorMessage(error: scanError).replacingOccurrences(of: ".gameTitle", with: scan.gameTitle)
                         self.isShowingErrorAlert = true
                     case .success(let scannedGame):
+                        gameData.title = scan.gameTitle
                         gameData.lengthInMinutes = Double(scannedGame.playingtime)
                         gameData.minimumPlayers = Double(scannedGame.minplayers)
                         gameData.maximumPlayers = Double(scannedGame.maxplayers)

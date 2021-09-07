@@ -38,10 +38,10 @@ struct CardView: View {
                     Spacer()
                     HStack {
                         if game.typeIsBase {
-                            Image(systemName: "rectangle")
+                            Image(systemName: GameTypeIcon.base.rawValue)
                         } else {
-                            if game.typeIsExpansion { Image(systemName: "plus.rectangle.on.rectangle") }
-                            if game.typeIsVariant { Image(systemName: "rectangle.on.rectangle.angled.fill") }
+                            if game.typeIsExpansion { Image(systemName: GameTypeIcon.expansion.rawValue) }
+                            if game.typeIsVariant { Image(systemName: GameTypeIcon.variant.rawValue) }
                         }
                         Spacer()
                         Label("\(game.minimumPlayers) - \(game.maximumPlayers)", systemImage: "person.3")
@@ -68,7 +68,6 @@ struct CardView_Previews: PreviewProvider {
     static var game = TabletopGame.data[2]
     static var previews: some View {
         CardView(game: game)
-            //.background(game.color)
             .previewLayout(.fixed(width: 400, height: 75))
     }
 }

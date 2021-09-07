@@ -14,6 +14,7 @@ struct Library: Identifiable, Codable {
     var color: Color
     var games: [TabletopGame]
     var dummy: Bool = false
+    var selectedGame: TabletopGame?
     
     init(id: UUID = UUID(), title: String = "", color: Color = Color.random, games: [TabletopGame] = [], dummy: Bool = false) {
         self.id = id
@@ -27,6 +28,13 @@ struct Library: Identifiable, Codable {
         self.title = lib.title
         self.color = lib.color
         self.games = lib.games
+    }
+    
+    func getGameIndex(game: TabletopGame) -> Int {
+        guard let gameIndex = self.games.firstIndex(where: { $0.id == game.id }) else {
+            fatalError("Can't find game in array")
+        }
+        return gameIndex
     }
 }
 

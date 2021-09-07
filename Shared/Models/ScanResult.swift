@@ -83,7 +83,7 @@ class ScanResult: Identifiable, Codable {
     
     func stripPhrases(string: String, additional: [String] = []) -> String {
         var strippedString = string.capitalized
-        let commonPhrases: [String] = ["Strategy", "Board Game", " - "]
+        let commonPhrases: [String] = ["Strategy", "Board Game", " - ", ":"]
         let allPhrases: [String] = additional + commonPhrases
         for phrase in allPhrases { strippedString = strippedString.replacingOccurrences(of: phrase.capitalized, with: "") }
         strippedString = strippedString.trimmingCharacters(in: .whitespacesAndNewlines)

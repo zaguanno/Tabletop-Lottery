@@ -22,22 +22,23 @@ struct TabletopGame: Identifiable, Codable {
     //var image: Image
     var imageURLString: String
     //var categories: [String]
-    var playthrough: [Playthrough]
+    var playthroughs: [Playthrough]
     //var comments: [Comments]
+    var dummy: Bool = false
     
     init(id: UUID = UUID(),
-         title: String,
+         title: String = "",
          typeIsBase: Bool = true,
          typeIsExpansion: Bool = false,
          typeIsVariant: Bool = false,
-         minimumPlayers: Int,
-         maximumPlayers: Int,
-         lengthInMinutes: Int,
-         color: Color,
+         minimumPlayers: Int = 1,
+         maximumPlayers: Int = 20,
+         lengthInMinutes: Int = 60,
+         color: Color = Color.random,
          rating: Rating = Rating(0),
          baseGameID: UUID? = nil,
          imageURLString: String = "",
-         playthrough: [Playthrough] = []) {
+         playthroughs: [Playthrough] = []) {
         self.id = id
         self.title = title
         self.typeIsBase = typeIsBase
@@ -50,7 +51,7 @@ struct TabletopGame: Identifiable, Codable {
         self.rating = rating
         self.baseGameID = baseGameID
         self.imageURLString = imageURLString
-        self.playthrough = playthrough
+        self.playthroughs = playthroughs
     }
     
     func imageURL() -> URL {
@@ -58,7 +59,22 @@ struct TabletopGame: Identifiable, Codable {
     }
     
     mutating func recalculateRating() {
-        rating = Rating(playthrough.reduce(0) { ($0 + $1.rating.rating) } / Double(playthrough.count))
+        rating = Rating(playthroughs.reduce(0) { ($0 + $1.rating.rating) } / Double(playthroughs.count))
+    }
+    
+    mutating func updateDetails(_ game: TabletopGame) {
+        self.title = game.title
+        self.typeIsBase = game.typeIsBase
+        self.typeIsExpansion = game.typeIsExpansion
+        self.typeIsVariant = game.typeIsVariant
+        self.minimumPlayers = game.minimumPlayers
+        self.maximumPlayers = game.maximumPlayers
+        self.lengthInMinutes = game.lengthInMinutes
+        self.color = game.color
+        self.rating = game.rating
+        self.baseGameID = game.baseGameID
+        self.imageURLString = game.imageURLString
+        self.playthroughs = game.playthroughs
     }
 }
 

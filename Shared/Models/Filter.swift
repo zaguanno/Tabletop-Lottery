@@ -27,7 +27,7 @@ struct Filter: Identifiable, Codable {
             return (game.minimumPlayers <= Int(self.numberOfPlayers) && game.maximumPlayers >= Int(self.numberOfPlayers))
                 && game.rating.rating >= self.minimumRating
                 && game.lengthInMinutes <= Int(self.maximumPlayTime)
-                && isPlaythroughStateMatched(game.playthrough)
+                && isPlaythroughStateMatched(game.playthroughs)
         })
         
         return gameOptions

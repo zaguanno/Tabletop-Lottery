@@ -11,26 +11,19 @@ struct LotteryWheelView: View {
     @EnvironmentObject var libraryData: LibraryData
     @Binding var games: [TabletopGame]
     @State private var wheelSpun: Bool = false
-    @State private var noOptions: Bool = false
-    @State private var selectedGame: TabletopGame = TabletopGame(title: "No games match your criteria",
-                                                                 minimumPlayers: 0,
-                                                                 maximumPlayers: 0,
-                                                                 lengthInMinutes: 0,
-                                                                 color: Color.white,
-                                                                 rating: Rating(0))
     @State private var filter: Filter = Filter(numberOfPlayers: 2, minimumRating: 0, maximumPlayTime: 60, playthroughState: .allGames)
     var body: some View {
         VStack {
             List {
-                if(noOptions) {
+                if(libraryData.activeLibrary.selectedGame == nil) {
                     HStack {
                         Image(systemName: "exclamationmark.octagon.fill")
                             .foregroundColor(Color.red)
                         Text("No games match your criteria!")
                     }
                 } else {
-                    NavigationLink(destination: DetailView(game: $selectedGame, games: $games)) {
-                        CardView(game: selectedGame)
+                    NavigationLink(destination: DetailView(game: binding(for: libraryData.activeLibrary.selectedGame!), games: $games)) {
+                        CardView(game: record(for: libraryData.activeLibrary.selectedGame!))
                     }
                     .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                 }
@@ -78,7 +71,7 @@ struct LotteryWheelView: View {
             }
             .padding(.horizontal)
             Button {
-                spinTheWheel()
+                selectGame()
                 wheelSpun = true
             } label: {
                 Text("Spin the Wheel")
@@ -91,7 +84,7 @@ struct LotteryWheelView: View {
         }
         .navigationTitle("\(libraryData.activeLibrary.title)")
         .onAppear() {
-            wheelSpun = false
+            
         }
     }
     
@@ -101,20 +94,16 @@ struct LotteryWheelView: View {
         }
         return $games[gameIndex]
     }
-    private func spinTheWheel() {
-        noOptions = false
+    private func record(for game: TabletopGame) -> TabletopGame {
+        guard let gameIndex = games.firstIndex(where: { $0.id == game.id }) else {
+            fatalError("Can't find game in array")
+        }
+        return games[gameIndex]
+    }
+    private func selectGame() {
         let gameOptions = filter.filterGameOptions(allGames: games)
         
-        let noResults: TabletopGame = TabletopGame(title: "No games match your criteria",
-                                     minimumPlayers: 0,
-                                     maximumPlayers: 0,
-                                     lengthInMinutes: 0,
-                                     color: Color.white,
-                                     rating: Rating(0))
-        if(gameOptions.isEmpty) {
-            noOptions = true
-        }
-        selectedGame = (gameOptions.isEmpty) ? noResults : gameOptions.randomElement()!
+        libraryData.activeLibrary.selectedGame = gameOptions.randomElement()
     }
 }
 

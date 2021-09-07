@@ -44,28 +44,34 @@ struct DetailView: View {
             Section(header: Text("Game Info")) {
                 HStack {
                     VStack {
-                        Image(systemName: "rectangle")
+                        Image(systemName: GameTypeIcon.base.rawValue)
                         Text("Base Game")
                             .font(.caption)
                     }
                     .padding(10)
                     .background(game.typeIsBase ? Color.green : Color.gray)
+                    .opacity(game.typeIsBase ? 1 : 0.25)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
                     Spacer()
                     VStack {
-                        Image(systemName: "plus.rectangle.on.rectangle")
+                        Image(systemName: GameTypeIcon.expansion.rawValue)
                         Text("Expansion")
                             .font(.caption)
                     }
                     .padding(10)
                     .background(game.typeIsExpansion ? Color.green : Color.gray)
+                    .opacity(game.typeIsExpansion ? 1 : 0.25)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
                     Spacer()
                     VStack {
-                        Image(systemName: "rectangle.on.rectangle.angled.fill")
-                        Text("Variant")
+                        Image(systemName: GameTypeIcon.variant.rawValue)
+                        Text("  Variant  ")
                             .font(.caption)
                     }
                     .padding(10)
                     .background(game.typeIsVariant ? Color.green : Color.gray)
+                    .opacity(game.typeIsVariant ? 1 : 0.25)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
                 }
                 HStack {
                     Label("Number of Players", systemImage: "person.3")
@@ -88,10 +94,10 @@ struct DetailView: View {
                 .accessibilityElement(children: .ignore)
             }
             Section(header: Text("Playthroughs")) {
-                if game.playthrough.isEmpty {
+                if game.playthroughs.isEmpty {
                     Label("This game hasn't been played yet.", systemImage: "calendar.badge.exclamationmark")
                 }
-                ForEach(game.playthrough) {playthrough in
+                ForEach(game.playthroughs) {playthrough in
                     HStack {
                         Image(systemName: "calendar")
                         Text(playthrough.date, style: .date)

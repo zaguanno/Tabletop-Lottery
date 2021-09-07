@@ -21,15 +21,22 @@ class LibraryData: ObservableObject {
     private static var fileURL: URL {
         return documentsFolder.appendingPathComponent("library.data")
     }
-    @Published var libraries: [Library] = [
-        //Library(title: "My Library")
-    ] {
+    @Published var libraries: [Library] = [] {
         willSet {
             objectWillChange.send()
             self.save()
         }
     }
-    @Published var activeLibrary: Library = Library(dummy: true)
+    @Published var activeLibrary: Library = Library(dummy: true) {
+        willSet {
+            objectWillChange.send()
+            updateLibraryDetails(library: self.activeLibrary)
+            self.save()
+            #if DEBUG
+            //check for save errors here
+            #endif
+        }
+    }
     
     init() {
         //self.activateLibrary(library: self.libraries[0])
@@ -38,15 +45,34 @@ class LibraryData: ObservableObject {
     func load() {
         DispatchQueue.global(qos: .background).async { [weak self] in
             guard let data = try? Data(contentsOf: Self.fileURL) else {
-                #if DEBUG
+                print("New App State.")
+                print("..Defaulting to Empty Library State.")
                 DispatchQueue.main.async {
-                    self?.libraries = Library.data
+                    self?.libraries = [Library(title: "My Game Library")]
+                    
+                    #if DEBUG
+                        print("..Prepopulating with Test Data.")
+                        self?.libraries = Library.data
+                    #endif
+                    
+                    self?.activateLibrary(library: (self?.libraries[0])!)
                 }
-                #endif
                 return
             }
             guard let gameLibraries = try? JSONDecoder().decode([Library].self, from: data) else {
-                fatalError("Can't decode saved library data.")
+                print("Can't decode saved library data.")
+                print("..Defaulting to Empty Library State.")
+                DispatchQueue.main.async {
+                    self?.libraries = [Library(title: "My Game Library")]
+                    
+                    #if DEBUG
+                        print("..Prepopulating with Test Data.")
+                        self?.libraries = Library.data
+                    #endif
+                    
+                    self?.activateLibrary(library: (self?.libraries[0])!)
+                }
+                return
             }
             DispatchQueue.main.async {
                 self?.libraries = gameLibraries
@@ -63,15 +89,15 @@ class LibraryData: ObservableObject {
     }
     
     func activateLibrary(library: Library) {
-        if(!self.activeLibrary.dummy) {
-            updateLibraryDetails(library: self.activeLibrary)
-        }
+        updateLibraryDetails(library: self.activeLibrary)
         
         self.activeLibrary = self.libraries[getLibraryIndex(library: library)]
     }
     
     func updateLibraryDetails(library: Library) {
-        self.libraries[getLibraryIndex(library: library)].updateDetails(library)
+        if(!self.activeLibrary.dummy) {
+            self.libraries[getLibraryIndex(library: library)].updateDetails(library)
+        }
     }
     
     func save() {

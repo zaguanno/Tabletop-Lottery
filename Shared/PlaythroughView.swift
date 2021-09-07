@@ -72,7 +72,7 @@ struct PlaythroughView: View {
         .onDisappear {
             if(playthroughTimer.secondsElapsed > 0) {
                 newPlaythrough = Playthrough(lengthInMinutes: playthroughTimer.minutesElapsed, rating: Rating(currentPlayRating))
-                game.playthrough.insert(newPlaythrough, at: 0)
+                game.playthroughs.insert(newPlaythrough, at: 0)
                 game.recalculateRating()
             }
         }

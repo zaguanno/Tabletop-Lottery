@@ -27,6 +27,8 @@
 		B509D3E026DFD1CA00C53735 /* LibraryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3DE26DFD1CA00C53735 /* LibraryCardView.swift */; };
 		B509D3E226E145C800C53735 /* LibraryEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3E126E145C800C53735 /* LibraryEditView.swift */; };
 		B509D3E326E145C800C53735 /* LibraryEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3E126E145C800C53735 /* LibraryEditView.swift */; };
+		B509D3E526E7FDBA00C53735 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3E426E7FDB800C53735 /* Utilities.swift */; };
+		B509D3E626E7FDBA00C53735 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3E426E7FDB800C53735 /* Utilities.swift */; };
 		B54A586626D43DEA004EDF31 /* Tabletop_LotteryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A585326D43DE8004EDF31 /* Tabletop_LotteryApp.swift */; };
 		B54A586726D43DEA004EDF31 /* Tabletop_LotteryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A585326D43DE8004EDF31 /* Tabletop_LotteryApp.swift */; };
 		B54A586A26D43DEA004EDF31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B54A585526D43DEA004EDF31 /* Assets.xcassets */; };
@@ -70,6 +72,7 @@
 		B509D3DB26DFCBEB00C53735 /* LibrariesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibrariesView.swift; sourceTree = "<group>"; };
 		B509D3DE26DFD1CA00C53735 /* LibraryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCardView.swift; sourceTree = "<group>"; };
 		B509D3E126E145C800C53735 /* LibraryEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryEditView.swift; sourceTree = "<group>"; };
+		B509D3E426E7FDB800C53735 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		B54A585326D43DE8004EDF31 /* Tabletop_LotteryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabletop_LotteryApp.swift; sourceTree = "<group>"; };
 		B54A585526D43DEA004EDF31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B54A585A26D43DEA004EDF31 /* Tabletop Lottery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tabletop Lottery.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -192,6 +195,7 @@
 				B54A588126D44987004EDF31 /* GameData.swift */,
 				B509D3C726D9D68A00C53735 /* Rating.swift */,
 				B509D3D426DECBE800C53735 /* Library.swift */,
+				B509D3E426E7FDB800C53735 /* Utilities.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -316,6 +320,7 @@
 				B54A588E26D5492A004EDF31 /* PlaythroughView.swift in Sources */,
 				B509D3D926DFC83E00C53735 /* LibraryData.swift in Sources */,
 				B54A588226D44987004EDF31 /* GameData.swift in Sources */,
+				B509D3E526E7FDBA00C53735 /* Utilities.swift in Sources */,
 				B54A588826D44C5F004EDF31 /* EditView.swift in Sources */,
 				B54A587C26D43F86004EDF31 /* Color+Codable.swift in Sources */,
 				B54A589126D54960004EDF31 /* LotteryWheelView.swift in Sources */,
@@ -345,6 +350,7 @@
 				B54A588F26D5492A004EDF31 /* PlaythroughView.swift in Sources */,
 				B509D3DA26DFC83F00C53735 /* LibraryData.swift in Sources */,
 				B54A588326D44987004EDF31 /* GameData.swift in Sources */,
+				B509D3E626E7FDBA00C53735 /* Utilities.swift in Sources */,
 				B54A588926D44C5F004EDF31 /* EditView.swift in Sources */,
 				B54A587D26D43F86004EDF31 /* Color+Codable.swift in Sources */,
 				B54A589226D54960004EDF31 /* LotteryWheelView.swift in Sources */,

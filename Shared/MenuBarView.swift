@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct MenuBarView: View {
+    @Environment(\.scenePhase) private var scenePhase
     @EnvironmentObject var libraryData: LibraryData
     @EnvironmentObject var menuBar: MenuBar
     @Binding var libraries: [Library]
-    @Binding var games: [TabletopGame]
     let saveAction: () -> Void
     
     var body: some View {
@@ -26,8 +26,6 @@ struct MenuBarView: View {
             .tag(0)
             
             NavigationView {
-                //let activeLibraryBinding = binding(for: libraryData.activeLibrary)
-                //GamesView(games: activeLibraryBinding!.games, saveAction: saveAction)
                 GamesView(games: $libraryData.activeLibrary.games, saveAction: saveAction)
             }
             .navigationViewStyle(StackNavigationViewStyle())
@@ -39,11 +37,12 @@ struct MenuBarView: View {
             NavigationView {
                 LotteryWheelView(games: $libraryData.activeLibrary.games)
             }
+            .navigationViewStyle(StackNavigationViewStyle())
             .tabItem {
                 Label("Spin the Wheel", systemImage: "arrow.2.circlepath")
             }
             .tag(2)
-            
+            /*
             NavigationView {
                 EmptyView()
             }
@@ -59,25 +58,24 @@ struct MenuBarView: View {
                 Label("Players", systemImage: "questionmark")
             }
             .tag(4)
+            */
+        }
+        .onChange(of: menuBar.tabSelection) { newValue in
+            saveAction()
+        }
+        .onChange(of: scenePhase) { phase in
+            if phase == .inactive { saveAction() }
         }
         .onAppear() {
             UITabBar.appearance().barTintColor = .white
         }
-    }
-    
-    private func binding(for library: Library) -> Binding<Library>? {
-        guard let libraryIndex = libraryData.libraries.firstIndex(where: { $0.id == library.id }) else {
-            return nil
-            //fatalError("Can't find library in array")
-        }
-        return $libraryData.libraries[libraryIndex]
     }
 }
 
 struct MenuBarView_Previews: PreviewProvider {
     static var previews: some View {
         let libraryData = LibraryData()
-        MenuBarView(libraries: .constant(Library.data), games: .constant(TabletopGame.data), saveAction: {})
+        MenuBarView(libraries: .constant(Library.data), saveAction: {})
             .environmentObject(libraryData)
             .environmentObject(MenuBar(0))
             .onAppear() {
