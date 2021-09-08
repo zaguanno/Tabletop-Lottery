@@ -39,7 +39,7 @@ struct MenuBarView: View {
             }
             .navigationViewStyle(StackNavigationViewStyle())
             .tabItem {
-                Label("Spin the Wheel", systemImage: "arrow.2.circlepath")
+                Label("Random Picker", systemImage: "arrow.2.circlepath")
             }
             .tag(2)
             /*
@@ -77,7 +77,7 @@ struct MenuBarView_Previews: PreviewProvider {
         let libraryData = LibraryData()
         MenuBarView(libraries: .constant(Library.data), saveAction: {})
             .environmentObject(libraryData)
-            .environmentObject(MenuBar(0))
+            .environmentObject(MenuBar(2))
             .onAppear() {
                 libraryData.load()
             }

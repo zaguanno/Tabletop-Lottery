@@ -14,6 +14,17 @@ struct LotteryWheelView: View {
     @State private var filter: Filter = Filter(numberOfPlayers: 2, minimumRating: 0, maximumPlayTime: 60, playthroughState: .allGames)
     var body: some View {
         VStack {
+            Image("Playthru_Logo")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .padding(.bottom)
+            HStack {
+                Spacer()
+                Text("\(libraryData.activeLibrary.title) Library")
+                    .bold()
+                    .padding(.trailing)
+            }
+            Spacer()
             List {
                 if(libraryData.activeLibrary.selectedGame == nil) {
                     HStack {
@@ -22,6 +33,8 @@ struct LotteryWheelView: View {
                         Text("No games match your criteria!")
                     }
                 } else {
+                    Text("You should play...")
+                        .font(.title)
                     NavigationLink(destination: DetailView(game: binding(for: libraryData.activeLibrary.selectedGame!), games: $games)) {
                         CardView(game: record(for: libraryData.activeLibrary.selectedGame!))
                     }
@@ -74,15 +87,17 @@ struct LotteryWheelView: View {
                 selectGame()
                 wheelSpun = true
             } label: {
-                Text("Spin the Wheel")
+                Text("Pick for Me")
+                    .foregroundColor(Color(hex: "#FDC327"))
+                    .bold()
                     .padding(20)
             }
-            .background(Color.green)
+            .background(Color(hex: "#2a27fd"))
             .contentShape(Rectangle())
             .clipShape(RoundedRectangle(cornerRadius: 25))
             .padding()
         }
-        .navigationTitle("\(libraryData.activeLibrary.title)")
+        .navigationBarHidden(true)
         .onAppear() {
             
         }

@@ -1,7 +1,8 @@
-#  Tabletop Lottery
+#  Playthru
 
 ToDo Feature List
-- [ ] Rename App
+- [x] Rename App
+- [ ] Cascade Playthru name
 - [ ] Connecting Expansions to Base games
 - [x] icons for base vs expansion vs variant
 - [ ] Visual for Wheel (is it a wheel?)
