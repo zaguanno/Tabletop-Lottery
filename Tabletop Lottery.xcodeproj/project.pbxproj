@@ -29,6 +29,10 @@
 		B509D3E326E145C800C53735 /* LibraryEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3E126E145C800C53735 /* LibraryEditView.swift */; };
 		B509D3E526E7FDBA00C53735 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3E426E7FDB800C53735 /* Utilities.swift */; };
 		B509D3E626E7FDBA00C53735 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D3E426E7FDB800C53735 /* Utilities.swift */; };
+		B509D43326F24C8200C53735 /* Playthru.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B509D43126F24C8100C53735 /* Playthru.xcdatamodeld */; };
+		B509D43426F24C8200C53735 /* Playthru.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B509D43126F24C8100C53735 /* Playthru.xcdatamodeld */; };
+		B509D43626F24D1300C53735 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D43526F24D1200C53735 /* Persistence.swift */; };
+		B509D43726F24D1300C53735 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509D43526F24D1200C53735 /* Persistence.swift */; };
 		B54A586626D43DEA004EDF31 /* Tabletop_LotteryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A585326D43DE8004EDF31 /* Tabletop_LotteryApp.swift */; };
 		B54A586726D43DEA004EDF31 /* Tabletop_LotteryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A585326D43DE8004EDF31 /* Tabletop_LotteryApp.swift */; };
 		B54A586A26D43DEA004EDF31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B54A585526D43DEA004EDF31 /* Assets.xcassets */; };
@@ -73,6 +77,8 @@
 		B509D3DE26DFD1CA00C53735 /* LibraryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCardView.swift; sourceTree = "<group>"; };
 		B509D3E126E145C800C53735 /* LibraryEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryEditView.swift; sourceTree = "<group>"; };
 		B509D3E426E7FDB800C53735 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		B509D43226F24C8100C53735 /* Playthru.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Playthru.xcdatamodel; sourceTree = "<group>"; };
+		B509D43526F24D1200C53735 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		B54A585326D43DE8004EDF31 /* Tabletop_LotteryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabletop_LotteryApp.swift; sourceTree = "<group>"; };
 		B54A585526D43DEA004EDF31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B54A585A26D43DEA004EDF31 /* Tabletop Lottery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tabletop Lottery.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,6 +144,8 @@
 		B54A585226D43DE8004EDF31 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				B509D43126F24C8100C53735 /* Playthru.xcdatamodeld */,
+				B509D43526F24D1200C53735 /* Persistence.swift */,
 				B509D3D726DFC7E600C53735 /* DataStorage */,
 				B54A585526D43DEA004EDF31 /* Assets.xcassets */,
 				B54A587426D43EA0004EDF31 /* Models */,
@@ -250,7 +258,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1250;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1300;
 				TargetAttributes = {
 					B54A585926D43DEA004EDF31 = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -314,6 +322,7 @@
 				B54A589D26D6973F004EDF31 /* ScanResult.swift in Sources */,
 				B509D3D226DD787300C53735 /* MenuBarView.swift in Sources */,
 				B54A588B26D44C6B004EDF31 /* DetailView.swift in Sources */,
+				B509D43326F24C8200C53735 /* Playthru.xcdatamodeld in Sources */,
 				B509D3E226E145C800C53735 /* LibraryEditView.swift in Sources */,
 				B54A587926D43F47004EDF31 /* Playthrough.swift in Sources */,
 				B509D3C826D9D68A00C53735 /* Rating.swift in Sources */,
@@ -326,6 +335,7 @@
 				B54A589126D54960004EDF31 /* LotteryWheelView.swift in Sources */,
 				B509D3DC26DFCBEB00C53735 /* LibrariesView.swift in Sources */,
 				B54A588526D44C4D004EDF31 /* CardView.swift in Sources */,
+				B509D43626F24D1300C53735 /* Persistence.swift in Sources */,
 				B54A586626D43DEA004EDF31 /* Tabletop_LotteryApp.swift in Sources */,
 				B509D3DF26DFD1CA00C53735 /* LibraryCardView.swift in Sources */,
 				B509D3CC26DAA9C700C53735 /* PlaythroughTimerView.swift in Sources */,
@@ -344,6 +354,7 @@
 				B54A589E26D6973F004EDF31 /* ScanResult.swift in Sources */,
 				B509D3D326DD787300C53735 /* MenuBarView.swift in Sources */,
 				B54A588C26D44C6B004EDF31 /* DetailView.swift in Sources */,
+				B509D43426F24C8200C53735 /* Playthru.xcdatamodeld in Sources */,
 				B509D3E326E145C800C53735 /* LibraryEditView.swift in Sources */,
 				B54A587A26D43F47004EDF31 /* Playthrough.swift in Sources */,
 				B509D3C926D9D68A00C53735 /* Rating.swift in Sources */,
@@ -356,6 +367,7 @@
 				B54A589226D54960004EDF31 /* LotteryWheelView.swift in Sources */,
 				B509D3DD26DFCBEB00C53735 /* LibrariesView.swift in Sources */,
 				B54A588626D44C4D004EDF31 /* CardView.swift in Sources */,
+				B509D43726F24D1300C53735 /* Persistence.swift in Sources */,
 				B54A586726D43DEA004EDF31 /* Tabletop_LotteryApp.swift in Sources */,
 				B509D3E026DFD1CA00C53735 /* LibraryCardView.swift in Sources */,
 				B509D3CD26DAA9C700C53735 /* PlaythroughTimerView.swift in Sources */,
@@ -492,7 +504,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.apps.Tabletop-Lottery";
+				PRODUCT_BUNDLE_IDENTIFIER = com.apps.Playthru;
 				PRODUCT_NAME = "Tabletop Lottery";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -514,7 +526,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.apps.Tabletop-Lottery";
+				PRODUCT_BUNDLE_IDENTIFIER = com.apps.Playthru;
 				PRODUCT_NAME = "Tabletop Lottery";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -529,6 +541,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 4NWBA4F5N9;
@@ -540,7 +553,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.apps.Tabletop-Lottery";
+				PRODUCT_BUNDLE_IDENTIFIER = com.apps.Playthru;
 				PRODUCT_NAME = "Tabletop Lottery";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
@@ -553,6 +566,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 4NWBA4F5N9;
@@ -564,7 +578,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.apps.Tabletop-Lottery";
+				PRODUCT_BUNDLE_IDENTIFIER = com.apps.Playthru;
 				PRODUCT_NAME = "Tabletop Lottery";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
@@ -652,6 +666,19 @@
 			productName = XMLCoder;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		B509D43126F24C8100C53735 /* Playthru.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B509D43226F24C8100C53735 /* Playthru.xcdatamodel */,
+			);
+			currentVersion = B509D43226F24C8100C53735 /* Playthru.xcdatamodel */;
+			path = Playthru.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B54A584E26D43DE8004EDF31 /* Project object */;
 }
