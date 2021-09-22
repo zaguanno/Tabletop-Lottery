@@ -1,10 +1,8 @@
 #  Playthru
 
 ToDo Feature List
-- [x] Rename App
+- [ ] Build out Readme File
 - [ ] Cascade Playthru name
-- [ ] Connecting Expansions to Base games
-- [x] icons for base vs expansion vs variant
 - [ ] Visual for Wheel (is it a wheel?)
 - [ ] Make Playthrough Timer global (persist throughout app and also on device)
 - [ ] Players model
@@ -16,3 +14,6 @@ ToDo Feature List
 - [x] Rename History to Playthroughs
 - [x] Play Timer
 - [x] Libraries
+- [x] Rename App
+- [x] Connecting Expansions to Base games
+- [x] icons for base vs expansion vs variant

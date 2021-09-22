@@ -18,7 +18,7 @@ struct TabletopGame: Identifiable, Codable {
     var lengthInMinutes: Int
     var color: Color
     var rating: Rating
-    var baseGameID: UUID?
+    var baseGameID: UUID? = nil
     //var image: Image
     var imageURLString: String
     //var categories: [String]
@@ -142,7 +142,7 @@ extension TabletopGame {
         var maximumPlayers: Double = 5
         var lengthInMinutes: Double = 5.0
         var color: Color = .random
-        var baseGameID: UUID?
+        var baseGameID: UUID? = nil
         var imageURLString: String = ""
         var rating: Rating = Rating(0)
     }

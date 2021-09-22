@@ -33,12 +33,18 @@ struct LotteryWheelView: View {
                         Text("No games match your criteria!")
                     }
                 } else {
-                    Text("You should play...")
-                        .font(.title)
                     NavigationLink(destination: DetailView(game: binding(for: libraryData.activeLibrary.selectedGame!), games: $games)) {
                         CardView(game: record(for: libraryData.activeLibrary.selectedGame!))
                     }
                     .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                    if(libraryData.activeLibrary.selectedGame!.typeIsExpansion) {
+                        HStack {
+                            Image(systemName: "exclamationmark.triangle.fill")
+                                .foregroundColor(Color.yellow)
+                            Text("This is an Expansion and requires the Base Game.")
+                                .font(.caption)
+                        }
+                    }
                 }
             }
             .opacity(wheelSpun ? 1 : 0)

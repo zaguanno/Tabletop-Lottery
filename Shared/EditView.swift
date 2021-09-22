@@ -19,6 +19,8 @@ struct EditView: View {
     @State private var scanResults: ScanResult = ScanResult()
     @State private var isSelectingNewImage: Bool = false
     @State var newImageURLString: String = ""
+    
+    @State private var selectedGameID: UUID? = nil
     var body: some View {
         List {
             Section(header: Text("Game Image")) {
@@ -102,19 +104,23 @@ struct EditView: View {
                 }
                 .padding(.leading, -10)
                 //TODO: Picker for connecting Expansion to Base
-               /*if gameData.typeIsExpansion {
+               if gameData.typeIsExpansion {
                     HStack {
-                        VStack {
+                        VStack(alignment: .leading) {
+                            Text("Expansion of:")
+                                .font(.caption)
                             Picker("Base Game", selection: $gameData.baseGameID) {
+                                Text("n/a").tag(nil as UUID?)
                                 ForEach(games.filter({$0.typeIsBase})) {game in
-                                    Text("\(game.title)").tag(game.baseGameID)
+                                    Text("\(game.title)").tag(game.id as UUID?)
                                 }
                             }
                             .pickerStyle(WheelPickerStyle())
-                            Text("suggestedTopping: \(gameData.baseGameID)")
+                            .frame(height: 75)
+                            .clipped()
                         }
                     }
-                }*/
+                }
                 HStack {
                     Slider(value: $gameData.lengthInMinutes, in: 5...120, step: 1.0) {
                         Text("Length")
@@ -266,6 +272,6 @@ struct EditView: View {
 
 struct EditView_Previews: PreviewProvider {
     static var previews: some View {
-        EditView(gameData: .constant(TabletopGame.data[2].data), games: .constant(TabletopGame.data), isNewGame: .constant(false))
+        EditView(gameData: .constant(TabletopGame.data[3].data), games: .constant(TabletopGame.data), isNewGame: .constant(false))
     }
 }

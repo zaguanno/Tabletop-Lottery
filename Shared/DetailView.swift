@@ -73,9 +73,19 @@ struct DetailView: View {
                     .opacity(game.typeIsVariant ? 1 : 0.25)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                 }
+                if(game.baseGameID != nil) {
+                    let baseGame = games.filter({$0.id == game.baseGameID})[0]
+                    NavigationLink(destination: DetailView(game: binding(for: baseGame), games: $games)) {
+                        HStack {
+                            Label("Base Game", systemImage: GameTypeIcon.base.rawValue)
+                            Spacer()
+                            Text("\(baseGame.title)")
+                        }
+                    }
+                }
                 HStack {
                     Label("Number of Players", systemImage: "person.3")
-                        .accessibilityLabel(Text("Game length"))
+                        .accessibilityLabel(Text("Number of players"))
                     Spacer()
                     Text("\(game.minimumPlayers) - \(game.maximumPlayers)")
                 }
@@ -110,6 +120,21 @@ struct DetailView: View {
                     }
                 }
             }
+            Section(header: Text("Expansions")) {
+                let expansions = games.filter({$0.baseGameID == game.id})
+                if expansions.isEmpty {
+                    Label("This game has no expansions", systemImage: GameTypeIcon.expansion.rawValue)
+                }
+                ForEach(expansions) {expansion in
+                    HStack {
+                        NavigationLink(destination: DetailView(game: binding(for: expansion), games: $games)) {
+                            HStack {
+                                Label("\(expansion.title)", systemImage: GameTypeIcon.expansion.rawValue)
+                            }
+                        }
+                    }
+                }
+            }
         }
         .listStyle(InsetGroupedListStyle())
         .navigationBarItems(trailing: Button("Edit") {
@@ -129,6 +154,13 @@ struct DetailView: View {
                     })
             }
         }
+    }
+    
+    private func binding(for game: TabletopGame) -> Binding<TabletopGame> {
+        guard let gameIndex = games.firstIndex(where: { $0.id == game.id }) else {
+            fatalError("Can't find game in array")
+        }
+        return $games[gameIndex]
     }
 }
 
