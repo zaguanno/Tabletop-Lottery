@@ -34,7 +34,7 @@
 		<key>UIColorName</key>
 		<string>LaunchScreenBackground</string>
 		<key>UIImageName</key>
-		<string>Playthru_Logo</string>
+		<string>Playthru_Hero</string>
 	</dict>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>

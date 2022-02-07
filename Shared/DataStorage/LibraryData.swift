@@ -48,7 +48,7 @@ class LibraryData: ObservableObject {
                 print("New App State.")
                 print("..Defaulting to Empty Library State.")
                 DispatchQueue.main.async {
-                    self?.libraries = [Library(title: "My Game Library")]
+                    self?.libraries = [Library(title: "My Games")]
                     
                     #if DEBUG
                         print("..Prepopulating with Test Data.")
@@ -63,7 +63,7 @@ class LibraryData: ObservableObject {
                 print("Can't decode saved library data.")
                 print("..Defaulting to Empty Library State.")
                 DispatchQueue.main.async {
-                    self?.libraries = [Library(title: "My Game Library")]
+                    self?.libraries = [Library(title: "My Games")]
                     
                     #if DEBUG
                         print("..Prepopulating with Test Data.")

@@ -14,7 +14,7 @@ struct LotteryWheelView: View {
     @State private var filter: Filter = Filter(numberOfPlayers: 2, minimumRating: 0, maximumPlayTime: 60, playthroughState: .allGames)
     var body: some View {
         VStack {
-            Image("Playthru_Logo")
+            Image("Playthru_Hero")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .padding(.bottom)
